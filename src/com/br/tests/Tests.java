@@ -1,5 +1,6 @@
 package com.br.tests;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,13 @@ public class Tests {
 				particoes, citacoes, palavras, pessoas
 		);
 		
-		Converter.toConvert(documento);
+		Converter converter = new Converter();
+		try {
+			converter.toConvert(documento);
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
