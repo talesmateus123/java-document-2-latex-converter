@@ -1,0 +1,1 @@
+rm -R *.lot *.brf *.loa *.aux *.lof *.log *.toc *.idx *.blg *.bbl *.brf || pdflatex tcc.tex && bibtex tcc.aux && pdflatex tcc.tex && pdflatex tcc.tex && rm -R *.lot *.brf *.loa *.aux *.lof *.log *.toc *.idx *.blg *.bbl *.brf
