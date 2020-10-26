@@ -68,7 +68,7 @@ public class Converter {
 					// TODO Implementation is missing
 					break;
 				case "dedicatoria.tex":
-					// TODO Implementation is missing
+					DocumentoBinder.bindDedicatoria(file, documento.getDedicatoria());
 					break;
 				case "capa.tex":
 					DocumentoBinder.bindCapa(file, documento);
