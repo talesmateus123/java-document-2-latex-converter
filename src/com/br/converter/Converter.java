@@ -13,11 +13,14 @@ import java.util.List;
 import com.br.converter.models.Documento;
 
 public class Converter {
+	private Documento documento;
+	
 	public void toConvert(Documento documento) throws IOException {
-		parseDocumentToTemplate(documento);
+		this.documento = documento;
+		parseDocumentToTemplate();
 	}
 	
-	private void parseDocumentToTemplate(Documento documento) throws IOException {
+	private void parseDocumentToTemplate() throws IOException {
 		File templateFile = new File("resources/templates/monografia");
 
 		String mainDirectoryPath = generateFileName();
@@ -37,11 +40,13 @@ public class Converter {
 		for (File elemento : elementos) {
 			switch(elemento.getName()) {
 				case "textuais":
+					// TODO Implementation is missing
 					break;
 				case "pre-textuais":
 					bindElementosPreTextuais(elemento.listFiles());
 					break;
 				case "pos-textuais":
+					// TODO Implementation is missing
 					break;
 			}
 		}
@@ -51,31 +56,36 @@ public class Converter {
 		for(File file : elementos) {
 			switch(file.getName()) {
 				case "agradecimentos.tex":
+					// TODO Implementation is missing
 					break;
 				case "epigrafe.tex":
+					// TODO Implementation is missing
 					break;
 				case "abstract.tex":
+					// TODO Implementation is missing
 					break;
 				case "resumo.tex":
+					// TODO Implementation is missing
 					break;
 				case "dedicatoria.tex":
+					// TODO Implementation is missing
 					break;
 				case "capa.tex":
-					DocumentoBinder.bindCapa(file);
+					DocumentoBinder.bindCapa(file, documento);
 					break;
 			}
 		}
 	}
 	
-	private void copyFolder(File src, File dest) throws IOException{
+	private void copyFolder(File src, File dest) throws IOException {
 	    if(src.isDirectory()) {
 	        if(!dest.exists()) dest.mkdir();
 
-	        String files[] = src.list();
+	        File[] files = src.listFiles();
 
-	        for (String file : files) {
-	            File srcFile = new File(src, file);
-	            File destFile = new File(dest, file);
+	        for (File file : files) {
+	            File srcFile = new File(src, file.getName());
+	            File destFile = new File(dest, file.getName());
 
 	            copyFolder(srcFile, destFile);
 	        }
