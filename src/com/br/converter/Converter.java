@@ -6,9 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.br.models.Documento;
 
@@ -32,12 +30,18 @@ public class Converter {
 		
 		copyFolder(templateFile, fileCopied);
 		
-		List<File> elementos = new ArrayList<File>();
-		for (File file : new File(fileCopied.getPath() + "/elementos").listFiles()) elementos.add(file);
-		bindDocumento2Files(elementos);
+		File[] elementos = new File(fileCopied.getPath() + "/elementos").listFiles();
+		File document = new File(fileCopied.getPath() + "/tcc.tex");
+		
+		bindDocument(document);
+		bindElementos(elementos);
 	}
 	
-	private void bindDocumento2Files(List<File> elementos) {
+	private void bindDocument(File document) {
+		documentParser.parseDocument(document, documento);
+	}
+	
+	private void bindElementos(File[] elementos) {
 		for (File elemento : elementos) {
 			switch(elemento.getName()) {
 				case "pre-textuais":
@@ -74,6 +78,8 @@ public class Converter {
 				case "ficha-catalografica.tex":
 					documentParser.parseFichaCatalografica(file, documento);
 					break;
+				case "folha-rosto.tex":
+					documentParser.parseFolhaDeRosto(file, documento);
 				case "resumo.tex":
 					documentParser.parseResumo(file, documento);
 					break;
