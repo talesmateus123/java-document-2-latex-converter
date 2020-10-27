@@ -1,21 +1,22 @@
 package com.br.models.pre_textual;
 
 import java.util.List;
+import java.util.Locale;
 
 public class Resumo {
 	private Long id;
 	private String texto;
-	private Integer idioma;
+	private Locale locale;
 	private List<String> palavrasChave;
 	
 	public Resumo() {
 		
 	}
 	
-	public Resumo(Long id, String texto, Integer idioma, List<String> palavrasChave) {
+	public Resumo(Long id, String texto, Locale locale, List<String> palavrasChave) {
 		this.id = id;
 		this.texto = texto;
-		this.idioma = idioma;
+		this.locale = locale;
 		this.palavrasChave = palavrasChave;
 	}
 
@@ -35,12 +36,12 @@ public class Resumo {
 		this.texto = texto;
 	}
 
-	public Integer getIdioma() {
-		return idioma;
+	public Locale getLocale() {
+		return locale;
 	}
 
-	public void setIdioma(Integer idioma) {
-		this.idioma = idioma;
+	public void setLocale(Locale locale) {
+		this.locale = locale;
 	}
 
 	public List<String> getPalavrasChave() {
