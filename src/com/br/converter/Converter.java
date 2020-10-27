@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.br.converter.models.Documento;
+import com.br.models.Documento;
 
 public class Converter {
+	private DocumentParser documentParser = new DocumentParser();
 	private Documento documento;
 	
 	public void toConvert(Documento documento) throws IOException {
@@ -40,13 +41,13 @@ public class Converter {
 		for (File elemento : elementos) {
 			switch(elemento.getName()) {
 				case "textuais":
-					// TODO Implementation is missing
+					bindElementosTextuais(elemento.listFiles());
 					break;
 				case "pre-textuais":
 					bindElementosPreTextuais(elemento.listFiles());
 					break;
 				case "pos-textuais":
-					// TODO Implementation is missing
+					bindElementosPosTextuais(elemento.listFiles());
 					break;
 			}
 		}
@@ -56,25 +57,33 @@ public class Converter {
 		for(File file : elementos) {
 			switch(file.getName()) {
 				case "agradecimentos.tex":
-					// TODO Implementation is missing
+					documentParser.parseAgradecimentos(file, documento);
 					break;
 				case "epigrafe.tex":
-					// TODO Implementation is missing
+					documentParser.parseEpigrafe(file, documento);
 					break;
 				case "abstract.tex":
-					// TODO Implementation is missing
+					documentParser.parseAbstractX(file, documento);
 					break;
 				case "resumo.tex":
-					// TODO Implementation is missing
+					documentParser.parseResumo(file, documento);
 					break;
 				case "dedicatoria.tex":
-					DocumentoBinder.bindDedicatoria(file, documento.getDedicatoria());
+					documentParser.parseDedicatoria(file, documento);
 					break;
 				case "capa.tex":
-					DocumentoBinder.bindCapa(file, documento);
+					documentParser.parseCapa(file, documento);
 					break;
 			}
 		}
+	}
+	
+	private void bindElementosTextuais(File[] elementos) {
+		// TODO To implement
+	}
+	
+	private void bindElementosPosTextuais(File[] elementos) {
+		// TODO To implement
 	}
 	
 	private void copyFolder(File src, File dest) throws IOException {

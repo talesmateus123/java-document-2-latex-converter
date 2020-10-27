@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.br.converter.Converter;
-import com.br.converter.models.Citacao;
-import com.br.converter.models.Documento;
-import com.br.converter.models.Palavra;
-import com.br.converter.models.Pessoa;
-import com.br.converter.models.data.Particao;
+import com.br.models.Citacao;
+import com.br.models.Documento;
+import com.br.models.Palavra;
+import com.br.models.Pessoa;
+import com.br.models.data.Particao;
 
 public class Tests {
 	public static void initTests() {

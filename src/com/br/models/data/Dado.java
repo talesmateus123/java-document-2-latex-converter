@@ -1,4 +1,4 @@
-package com.br.converter.models.data;
+package com.br.models.data;
 
 public class Dado {
 	private Long id;

@@ -1,4 +1,4 @@
-package com.br.converter.models;
+package com.br.models;
 
 public class Autor {
 	private Long id;

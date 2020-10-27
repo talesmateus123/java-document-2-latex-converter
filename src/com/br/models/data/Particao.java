@@ -1,8 +1,8 @@
-package com.br.converter.models.data;
+package com.br.models.data;
 
 import java.util.List;
 
-import com.br.converter.models.Documento;
+import com.br.models.Documento;
 
 public class Particao{
 	private Long id;
