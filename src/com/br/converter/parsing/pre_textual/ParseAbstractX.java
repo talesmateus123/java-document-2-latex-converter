@@ -8,11 +8,11 @@ public class ParseAbstractX extends Parse {
 	@Override
 	public String persistData(String string, Documento document) {
 		switch(string) {
-			case"/abstractX":
-				return document.getAbstractX();
-			case"/keywords":
+			case"\\abstractX":
+				return document.getA;
+			case"\\keywords":
 				// TODO Missing implementation
-				return string;
+				return "words";
 			default:
 				return string;
 		}

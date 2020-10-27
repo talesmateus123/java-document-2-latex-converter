@@ -21,9 +21,8 @@ public class ConverterUtil {
 		      FileWriter fileWriter = new FileWriter(file.getPath());
 		      fileWriter.write(string);
 		      fileWriter.close();
-		} 
+		}
 		catch (IOException e) {
-		      System.out.println("An error occurred.");
 		      e.printStackTrace();
 		}
 	}
@@ -31,7 +30,7 @@ public class ConverterUtil {
 	/**
 	 * Lê todas as linhas de um arquivo e retorna uma string com seu conteúdo.
 	 * @param file
-	 * @return String
+	 * @return string
 	 */
 	public static String readFile(File file) {
 		String lines = "";
@@ -44,7 +43,6 @@ public class ConverterUtil {
 		     scanner.close();
 		} 
 		catch (FileNotFoundException e) {
-			System.out.println("An error occurred.");
 		    e.printStackTrace();
 		}
 	    return lines;

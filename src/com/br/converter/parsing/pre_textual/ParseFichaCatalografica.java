@@ -3,13 +3,16 @@ package com.br.converter.parsing.pre_textual;
 import com.br.converter.parsing.Parse;
 import com.br.models.Documento;
 
-public class ParseEpigrafe extends Parse {
+public class ParseFichaCatalografica extends Parse {
 
 	@Override
 	public String persistData(String string, Documento document) {
 		switch(string) {
-			case"\\epigrafe":
-				return document.getEpigrafe();
+			case"\\palavraschave":
+				return "1. \\LaTeX.\n" + 
+						"		2. Editor WYSIWYG.\n" + 
+						"		3. Linguagens de marcação.\n" + 
+						"		4. Orientador.";
 			default:
 				return string;
 		}

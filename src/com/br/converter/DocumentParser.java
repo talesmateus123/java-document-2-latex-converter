@@ -7,6 +7,7 @@ import com.br.converter.parsing.pre_textual.ParseAgradecimentos;
 import com.br.converter.parsing.pre_textual.ParseCapa;
 import com.br.converter.parsing.pre_textual.ParseDedicatoria;
 import com.br.converter.parsing.pre_textual.ParseEpigrafe;
+import com.br.converter.parsing.pre_textual.ParseFichaCatalografica;
 import com.br.converter.parsing.pre_textual.ParseResumo;
 import com.br.models.Documento;
 
@@ -16,6 +17,7 @@ public class DocumentParser {
 	private ParseCapa parseCapa = new ParseCapa();
 	private ParseDedicatoria parseDedicatoria = new ParseDedicatoria();
 	private ParseEpigrafe parseEpigrafe = new ParseEpigrafe();
+	private ParseFichaCatalografica parseFichaCatalografica = new ParseFichaCatalografica();
 	private ParseResumo parseResumo = new ParseResumo();
 	
 	/**
@@ -71,6 +73,19 @@ public class DocumentParser {
 	 */
 	public void parseEpigrafe(File file, Documento document) {
 		this.parseEpigrafe.parse(file, document);
+	}
+	
+
+	
+	/**
+	 * Esse método realiza o "parsing" entre o documento e um arquivo passados por parâmetro 
+	 * 
+	 * @param file
+	 * @param documento
+	 * @return void
+	 */
+	public void parseFichaCatalografica(File file, Documento document) {
+		this.parseFichaCatalografica.parse(file, document);
 	}
 	
 	/**

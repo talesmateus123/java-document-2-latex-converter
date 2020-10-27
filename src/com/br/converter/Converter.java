@@ -40,14 +40,14 @@ public class Converter {
 	private void bindDocumento2Files(List<File> elementos) {
 		for (File elemento : elementos) {
 			switch(elemento.getName()) {
-				case "textuais":
-					bindElementosTextuais(elemento.listFiles());
-					break;
 				case "pre-textuais":
 					bindElementosPreTextuais(elemento.listFiles());
 					break;
+				case "textuais":
+					// bindElementosTextuais(elemento.listFiles());
+					break;
 				case "pos-textuais":
-					bindElementosPosTextuais(elemento.listFiles());
+					// bindElementosPosTextuais(elemento.listFiles());
 					break;
 			}
 		}
@@ -56,23 +56,26 @@ public class Converter {
 	private void bindElementosPreTextuais(File[] elementos) {
 		for(File file : elementos) {
 			switch(file.getName()) {
-				case "agradecimentos.tex":
-					documentParser.parseAgradecimentos(file, documento);
-					break;
-				case "epigrafe.tex":
-					documentParser.parseEpigrafe(file, documento);
-					break;
 				case "abstract.tex":
 					documentParser.parseAbstractX(file, documento);
 					break;
-				case "resumo.tex":
-					documentParser.parseResumo(file, documento);
+				case "agradecimentos.tex":
+					documentParser.parseAgradecimentos(file, documento);
+					break;
+				case "capa.tex":
+					documentParser.parseCapa(file, documento);
 					break;
 				case "dedicatoria.tex":
 					documentParser.parseDedicatoria(file, documento);
 					break;
-				case "capa.tex":
-					documentParser.parseCapa(file, documento);
+				case "epigrafe.tex":
+					documentParser.parseEpigrafe(file, documento);
+					break;
+				case "ficha-catalografica.tex":
+					documentParser.parseFichaCatalografica(file, documento);
+					break;
+				case "resumo.tex":
+					documentParser.parseResumo(file, documento);
 					break;
 			}
 		}

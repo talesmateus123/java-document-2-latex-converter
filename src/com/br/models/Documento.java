@@ -1,253 +1,208 @@
 package com.br.models;
 
-import java.util.List;
-
-import com.br.models.data.Particao;
-
 public class Documento {
 	private Long id;
 	private String titulo;
 	private String subTitulo;
 	private String title;
-	private int ano;
-	private String nivelEscolar;
-	private String tipo;
-	
+	private Pessoa autor;
 	private String nomeCidade;
-	private String nomeCurso;
-	private String nomeInstituicao;
-	private String siglaInstituicao;
-	private String tituloAcademico;
-	private String preAmbulo;
-	private String fichaCatalografica;
-	private String dedicatoria;
-	private String epigrafe;
-	private String resumo;
-	private String abstractX;
-	private String agradecimentos;
+	private Integer ano;
+	private Integer tipoTrabalho;
+	private Integer tituloAcademico;
+	private String areaConcentracao;
+	private String linhaPesquisa;
+	private Instituicao instituicao;
+	private Curso curso;
+	private Pessoa orientador;
+	private Pessoa coorientador;
+	private boolean aprovado;
 	
-	private List<Particao> particoes;
-	private List<Citacao> citacoes;
-	private List<Palavra> palavras;
-	private List<Pessoa> pessoas;
+	private ElementosPreTextuais elementosPreTextuais;
+	private ElementosTextuais elementosTextuais;
+	private ElementosPosTextuais elementosPosTextuais;
 	
 	public Documento() {
 	
 	}
 	
-	public Documento(Long id, String titulo, String subTitulo, String title, int ano, String nivelEscolar, String tipo,
-			String nomeCidade, String nomeCurso, String nomeInstituicao, String siglaInstituicao, String tituloAcademico, 
-			String preAmbulo, String fichaCatalografica, String dedicatoria, String epigrafe, String resumo, String abstractX, 
-			String agradecimentos, List<Particao> particoes, List<Citacao> citacoes, List<Palavra> palavras, List<Pessoa> pessoas) {
+	public Documento(Long id, String titulo, String subTitulo, String title, Pessoa autor, String nomeCidade,
+			Integer ano, Integer tipoTrabalho, Integer tituloAcademico, String areaConcentracao, String linhaPesquisa,
+			Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador, boolean aprovado,
+			ElementosPreTextuais elementosPreTextuais, ElementosTextuais elementosTextuais, ElementosPosTextuais elementosPosTextuais) {
 		this.id = id;
 		this.titulo = titulo;
 		this.subTitulo = subTitulo;
 		this.title = title;
-		this.ano = ano;
-		this.nivelEscolar = nivelEscolar;
-		this.tipo = tipo;
+		this.autor = autor;
 		this.nomeCidade = nomeCidade;
-		this.nomeCurso = nomeCurso;
-		this.nomeInstituicao = nomeInstituicao;
-		this.siglaInstituicao = siglaInstituicao;
+		this.ano = ano;
+		this.tipoTrabalho = tipoTrabalho;
 		this.tituloAcademico = tituloAcademico;
-		this.preAmbulo = preAmbulo;
-		this.fichaCatalografica = fichaCatalografica;
-		this.dedicatoria = dedicatoria;
-		this.epigrafe = epigrafe;
-		this.resumo = resumo;
-		this.abstractX = abstractX;
-		this.agradecimentos = agradecimentos;
-		this.particoes = particoes;
-		this.citacoes = citacoes;
-		this.palavras = palavras;
-		this.pessoas = pessoas;
+		this.areaConcentracao = areaConcentracao;
+		this.linhaPesquisa = linhaPesquisa;
+		this.instituicao = instituicao;
+		this.curso = curso;
+		this.orientador = orientador;
+		this.coorientador = coorientador;
+		this.aprovado = aprovado;
+		this.elementosPreTextuais = elementosPreTextuais;
+		this.elementosTextuais = elementosTextuais;
+		this.elementosPosTextuais = elementosPosTextuais;
 	}
 
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
 	public String getSubTitulo() {
 		return subTitulo;
 	}
-	
+
 	public void setSubTitulo(String subTitulo) {
 		this.subTitulo = subTitulo;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	public int getAno() {
-		return ano;
+
+	public Pessoa getAutor() {
+		return autor;
 	}
-	
-	public void setAno(int ano) {
-		this.ano = ano;
+
+	public void setAutor(Pessoa autor) {
+		this.autor = autor;
 	}
-	
-	public String getNivelEscolar() {
-		return nivelEscolar;
-	}
-	
-	public void setNivelEscolar(String nivelEscolar) {
-		this.nivelEscolar = nivelEscolar;
-	}
-	
-	public String getTipo() {
-		return tipo;
-	}
-	
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	
+
 	public String getNomeCidade() {
 		return nomeCidade;
 	}
-	
+
 	public void setNomeCidade(String nomeCidade) {
 		this.nomeCidade = nomeCidade;
 	}
-	
-	public String getNomeCurso() {
-		return nomeCurso;
+
+	public Integer getAno() {
+		return ano;
 	}
-	
-	public void setNomeCurso(String nomeCurso) {
-		this.nomeCurso = nomeCurso;
+
+	public void setAno(Integer ano) {
+		this.ano = ano;
 	}
-	
-	public String getNomeInstituicao() {
-		return nomeInstituicao;
+
+	public Integer getTipoTrabalho() {
+		return tipoTrabalho;
 	}
-	
-	public void setNomeInstituicao(String nomeInstituicao) {
-		this.nomeInstituicao = nomeInstituicao;
+
+	public void setTipoTrabalho(Integer tipoTrabalho) {
+		this.tipoTrabalho = tipoTrabalho;
 	}
-	
-	public String getSiglaInstituicao() {
-		return siglaInstituicao;
-	}
-	
-	public void setSiglaInstituicao(String siglaInstituicao) {
-		this.siglaInstituicao = siglaInstituicao;
-	}
-	
-	public String getTituloAcademico() {
+
+	public Integer getTituloAcademico() {
 		return tituloAcademico;
 	}
-	
-	public void setTituloAcademico(String tituloAcademico) {
+
+	public void setTituloAcademico(Integer tituloAcademico) {
 		this.tituloAcademico = tituloAcademico;
 	}
-	
-	public String getPreAmbulo() {
-		return preAmbulo;
+
+	public String getAreaConcentracao() {
+		return areaConcentracao;
 	}
-	
-	public void setPreAmbulo(String preAmbulo) {
-		this.preAmbulo = preAmbulo;
+
+	public void setAreaConcentracao(String areaConcentracao) {
+		this.areaConcentracao = areaConcentracao;
 	}
-	
-	public String getFichaCatalografica() {
-		return fichaCatalografica;
+
+	public String getLinhaPesquisa() {
+		return linhaPesquisa;
 	}
-	
-	public void setFichaCatalografica(String fichaCatalografica) {
-		this.fichaCatalografica = fichaCatalografica;
+
+	public void setLinhaPesquisa(String linhaPesquisa) {
+		this.linhaPesquisa = linhaPesquisa;
 	}
-	
-	public String getDedicatoria() {
-		return dedicatoria;
+
+	public Instituicao getInstituicao() {
+		return instituicao;
 	}
-	
-	public void setDedicatoria(String dedicatoria) {
-		this.dedicatoria = dedicatoria;
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
 	}
-	
-	public String getEpigrafe() {
-		return epigrafe;
+
+	public Curso getCurso() {
+		return curso;
 	}
-	
-	public void setEpigrafe(String epigrafe) {
-		this.epigrafe = epigrafe;
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
-	
-	public String getResumo() {
-		return resumo;
+
+	public Pessoa getOrientador() {
+		return orientador;
 	}
-	
-	public void setResumo(String resumo) {
-		this.resumo = resumo;
+
+	public void setOrientador(Pessoa orientador) {
+		this.orientador = orientador;
 	}
-	
-	public String getAbstractX() {
-		return abstractX;
+
+	public Pessoa getCoorientador() {
+		return coorientador;
 	}
-	
-	public void setAbstractX(String abstractX) {
-		this.abstractX = abstractX;
+
+	public void setCoorientador(Pessoa coorientador) {
+		this.coorientador = coorientador;
 	}
-	
-	public String getAgradecimentos() {
-		return agradecimentos;
+
+	public boolean isAprovado() {
+		return aprovado;
 	}
-	
-	public void setAgradecimentos(String agradecimentos) {
-		this.agradecimentos = agradecimentos;
-	}	
-	
-	public List<Particao> getParticoes() {
-		return particoes;
+
+	public void setAprovado(boolean aprovado) {
+		this.aprovado = aprovado;
 	}
-	
-	public void setParticoes(List<Particao> particoes) {
-		this.particoes = particoes;
+
+	public ElementosPreTextuais getElementosPreTextuais() {
+		return elementosPreTextuais;
 	}
-	
-	public List<Citacao> getCitacoes() {
-		return citacoes;
+
+	public void setElementosPreTextuais(ElementosPreTextuais elementosPreTextuais) {
+		this.elementosPreTextuais = elementosPreTextuais;
 	}
-	
-	public void setCitacoes(List<Citacao> citacoes) {
-		this.citacoes = citacoes;
+
+	public ElementosTextuais getElementosTextuais() {
+		return elementosTextuais;
 	}
-	
-	public List<Palavra> getPalavras() {
-		return palavras;
+
+	public void setElementosTextuais(ElementosTextuais elementosTextuais) {
+		this.elementosTextuais = elementosTextuais;
 	}
-	
-	public void setPalavras(List<Palavra> palavras) {
-		this.palavras = palavras;
+
+	public ElementosPosTextuais getElementosPosTextuais() {
+		return elementosPosTextuais;
 	}
-	
-	public List<Pessoa> getPessoas() {
-		return pessoas;
+
+	public void setElementosPosTextuais(ElementosPosTextuais elementosPosTextuais) {
+		this.elementosPosTextuais = elementosPosTextuais;
 	}
-	
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
-	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -271,7 +226,6 @@ public class Documento {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
+	}	
 	
 }
