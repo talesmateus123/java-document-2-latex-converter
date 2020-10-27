@@ -1,6 +1,7 @@
 package com.br.models;
 
 import java.time.LocalDate;
+import java.time.Year;
 
 import com.br.models.enums.TipoTrabalho;
 import com.br.models.enums.TituloAcademico;
@@ -16,7 +17,8 @@ public class Documento {
 	private String title;
 	private Pessoa autor;
 	private String nomeCidade;
-	private LocalDate data;
+	private Year ano;
+	private LocalDate dataAprovacao;
 	private Integer tipoTrabalho;
 	private Integer tituloAcademico;
 	private String areaConcentracao;
@@ -25,7 +27,6 @@ public class Documento {
 	private Curso curso;
 	private Pessoa orientador;
 	private Pessoa coorientador;
-	private boolean aprovado;
 	
 	private ElementosPreTextuais elementosPreTextuais;
 	private ElementosTextuais elementosTextuais;
@@ -36,8 +37,8 @@ public class Documento {
 	}
 	
 	public Documento(Long id, String titulo, String subTitulo, String title, Pessoa autor, String nomeCidade,
-			LocalDate data, TipoTrabalho tipoTrabalho, TituloAcademico tituloAcademico, String areaConcentracao, String linhaPesquisa,
-			Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador, boolean aprovado,
+			Year ano, LocalDate dataAprovacao, TipoTrabalho tipoTrabalho, TituloAcademico tituloAcademico, String areaConcentracao, 
+			String linhaPesquisa, Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador,
 			ElementosPreTextuais elementosPreTextuais, ElementosTextuais elementosTextuais, ElementosPosTextuais elementosPosTextuais) {
 		this.id = id;
 		this.titulo = titulo;
@@ -45,7 +46,8 @@ public class Documento {
 		this.title = title;
 		this.autor = autor;
 		this.nomeCidade = nomeCidade;
-		this.data = data;
+		this.ano = ano;
+		this.dataAprovacao = dataAprovacao;
 		this.tipoTrabalho = tipoTrabalho != null ? tipoTrabalho.getCod() : null;
 		this.tituloAcademico = tituloAcademico != null ? tituloAcademico.getCod() : null;
 		this.areaConcentracao = areaConcentracao;
@@ -54,7 +56,6 @@ public class Documento {
 		this.curso = curso;
 		this.orientador = orientador;
 		this.coorientador = coorientador;
-		this.aprovado = aprovado;
 		this.elementosPreTextuais = elementosPreTextuais;
 		this.elementosTextuais = elementosTextuais;
 		this.elementosPosTextuais = elementosPosTextuais;
@@ -108,12 +109,20 @@ public class Documento {
 		this.nomeCidade = nomeCidade;
 	}
 
-	public LocalDate getAno() {
-		return data;
+	public Year getAno() {
+		return ano;
 	}
 
-	public void setAno(LocalDate data) {
-		this.data = data;
+	public void setAno(Year ano) {
+		this.ano = ano;
+	}
+
+	public LocalDate getDataAprovacao() {
+		return dataAprovacao;
+	}
+
+	public void setDataAprovacao(LocalDate dataAprovacao) {
+		this.dataAprovacao = dataAprovacao;
 	}
 
 	public TipoTrabalho getTipoTrabalho() {
@@ -178,14 +187,6 @@ public class Documento {
 
 	public void setCoorientador(Pessoa coorientador) {
 		this.coorientador = coorientador;
-	}
-
-	public boolean isAprovado() {
-		return aprovado;
-	}
-
-	public void setAprovado(boolean aprovado) {
-		this.aprovado = aprovado;
 	}
 
 	public ElementosPreTextuais getElementosPreTextuais() {

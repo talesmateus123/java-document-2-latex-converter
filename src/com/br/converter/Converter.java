@@ -33,31 +33,31 @@ public class Converter {
 		File[] elementos = new File(fileCopied.getPath() + "/elementos").listFiles();
 		File document = new File(fileCopied.getPath() + "/tcc.tex");
 		
-		bindDocument(document);
-		bindElementos(elementos);
+		parseDocument(document);
+		parseElementos(elementos);
 	}
 	
-	private void bindDocument(File document) {
+	private void parseDocument(File document) {
 		documentParser.parseDocument(document, documento);
 	}
 	
-	private void bindElementos(File[] elementos) {
+	private void parseElementos(File[] elementos) {
 		for (File elemento : elementos) {
 			switch(elemento.getName()) {
 				case "pre-textuais":
-					bindElementosPreTextuais(elemento.listFiles());
+					parseElementosPreTextuais(elemento.listFiles());
 					break;
 				case "textuais":
-					bindElementosTextuais(elemento.listFiles());
+					parseElementosTextuais(elemento.listFiles());
 					break;
 				case "pos-textuais":
-					bindElementosPosTextuais(elemento.listFiles());
+					parseElementosPosTextuais(elemento.listFiles());
 					break;
 			}
 		}
 	}
 	
-	private void bindElementosPreTextuais(File[] elementos) {
+	private void parseElementosPreTextuais(File[] elementos) {
 		for(File file : elementos) {
 			switch(file.getName()) {
 				case "abstract.tex":
@@ -75,6 +75,9 @@ public class Converter {
 				case "epigrafe.tex":
 					documentParser.parseEpigrafe(file, documento);
 					break;
+				case "folha-aprovacao.tex":
+					documentParser.parseFolhaAprovacao(file, documento);
+					break;
 				case "ficha-catalografica.tex":
 					documentParser.parseFichaCatalografica(file, documento);
 					break;
@@ -87,11 +90,11 @@ public class Converter {
 		}
 	}
 	
-	private void bindElementosTextuais(File[] elementos) {
+	private void parseElementosTextuais(File[] elementos) {
 		// TODO To implement
 	}
 	
-	private void bindElementosPosTextuais(File[] elementos) {
+	private void parseElementosPosTextuais(File[] elementos) {
 		// TODO To implement
 	}
 	

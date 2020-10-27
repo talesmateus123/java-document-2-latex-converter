@@ -1,12 +1,11 @@
 package com.br.models.enums;
 
 public enum NivelEscolar {
-	MEDIO(0, "Médio"),
-	TECNICO(1, "Técnico"),
-	SUPERIOR(2, "Superior"),
-	POS_GRADUCAO(3, "Pós-graduação"),
-	MESTRADO(4, "Mestrado"),
-	DOUTORADO(5, "Doutorado");
+	TECNICO(0, "Técnico"),
+	SUPERIOR(1, "Superior"),
+	POS_GRADUCAO(2, "Pós-graduação"),
+	MESTRADO(3, "Mestrado"),
+	DOUTORADO(4, "Doutorado");
 	
 	private Integer cod;
 	private String description;

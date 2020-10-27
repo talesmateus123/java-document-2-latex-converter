@@ -3,6 +3,7 @@ package com.br.converter.parsing.pre_textual;
 import com.br.converter.parsing.Parse;
 import com.br.models.Documento;
 import com.br.models.enums.TipoTrabalho;
+import com.br.models.enums.TituloAcademico;
 
 public class ParseCapa extends Parse {
 	
@@ -16,13 +17,13 @@ public class ParseCapa extends Parse {
 			case"\\titleabstract{}":
 				return document.getElementosPreTextuais().getAbstractX() != null ? "\\titleabstract{" + document.getElementosPreTextuais().getAbstractX() + "}" : "%\\titleabstract{}";
 			case"\\autor{}":
-				return document.getAutor() != null ? "\\autor{" + document.getAutor().getNome() + "}" : "%\\autor{}";
+				return document.getAutor() != null ? "\\autor{" + document.getAutor().getNomeCompleto() + "}" : "%\\autor{}";
 			case"\\autorcitacao{}":
 				return document.getAutor() != null ? "\\autorcitacao{" + document.getAutor().getCitacao() + "}" : "%\\autorcitacao{}";
 			case"\\local{}":
 				return document.getNomeCidade() != null ? "\\local{" + document.getNomeCidade() + "}" : "%\\local{}";
 			case"\\data{}":
-				return document.getAno() != null ? "\\data{" + document.getAno().getYear() + "}" : "%\\data{}";
+				return document.getAno() != null ? "\\data{" + document.getAno() + "}" : "%\\data{}";
 			case"\\projeto{}":
 				return document.getTipoTrabalho() != null ? "\\projeto{" + document.getTipoTrabalho().getDescription() + "}" : "\\projeto{}";
 			case"\\tituloAcademico{}":
@@ -32,7 +33,7 @@ public class ParseCapa extends Parse {
 			case"\\linhapesquisa{}":
 				return document.getLinhaPesquisa() != null ? "\\linhapesquisa{" + document.getLinhaPesquisa() + "}" : "%\\linhapesquisa{}";
 			case"\\instituicao{}":
-				return document.getInstituicao().getNome() != null ? "\\instituicao{" + document.getInstituicao().getNome() + " - " + document.getInstituicao().getSigla() + "}" : "\\instituicao{" + "to implement" + "}";
+				return document.getInstituicao().getNome() != null ? "\\instituicao{" + document.getInstituicao().getNome() + "}" : "\\instituicao{" + "to implement" + "}";
 			case"\\newcommand\\instituicaosigla{}":
 				return document.getInstituicao().getSigla() != null ? "\\newcommand\\instituicaosigla{" + document.getInstituicao().getSigla() + "}" : "%\\newcommand\\instituicaosigla{}";
 			case"\\newcommand\\instituicaocampus{}":
@@ -40,7 +41,18 @@ public class ParseCapa extends Parse {
 			case"\\departamento{}":
 				return document.getTipoTrabalho() != TipoTrabalho.TCC && document.getInstituicao().getDepartamento() != null ? "\\departamento{" + document.getInstituicao().getDepartamento() + "}" : "%\\departamento{}";
 			case"\\programa{}":
-				return document.getCurso() != null ? "\\programa{Curso de " + document.getCurso().getNome() + "}" : "\\programa{" + "to implement" + "}";				
+				String tituloAcademico = "";
+				if (document.getCurso() != null) {
+					if (document.getTituloAcademico() == TituloAcademico.BACHAREL)
+						tituloAcademico = "técnico";
+					if (document.getTituloAcademico() == TituloAcademico.TECNOLOGO)
+						tituloAcademico = "de tecnologia";
+					if (document.getTituloAcademico() == TituloAcademico.MESTRE)
+						tituloAcademico = "de mestrado";
+					if (document.getTituloAcademico() == TituloAcademico.DOUTOR)
+						tituloAcademico = "de doutorado";
+				}
+				return document.getCurso() != null ? "\\programa{Curso " + tituloAcademico + " em " + document.getCurso().getNome() + "}" : "\\programa{" + "Nome do curso" + "}";				
 			case"\\newcommand\\programanivel{}":
 				return document.getCurso() != null ? "\\newcommand\\programanivel{" + document.getCurso().getNivelEscolar() + "}" : "";
 			case"\\orientador{Prof. }":

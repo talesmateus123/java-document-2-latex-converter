@@ -10,7 +10,7 @@ public class ParseFolhaDeRosto extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\folhaderosto":
-				if(document.getTipoTrabalho().equals(TipoTrabalho.TCC)) {
+				if(document.getTipoTrabalho() == TipoTrabalho.TCC) {
 					return "\\preambulo{{\\imprimirprojeto} apresentado ao {\\imprimirprograma} de {\\programanivel} do "
 							+ "{\\imprimirinstituicao} - \\instituicaosigla, {\\instituicaocampus}, em cumprimento às "
 							+ "exigências legais como requisito parcial à obtenção do título de {\\imprimirtituloAcademico} "

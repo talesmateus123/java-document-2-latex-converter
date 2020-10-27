@@ -8,6 +8,11 @@ public class ParseDocument extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\document":
+				String folhaDeAprovacao;
+				
+				folhaDeAprovacao = document.getDataAprovacao() != null ? "\\include{elementos/pre-textuais/folha-aprovacao}\n" 
+						: "\\include{elementos/pre-textuais/folha-aprovacao_old}\n";
+				
 				return "% INSERE ELEMENTOS PRÉ-TEXTUAIS\n" + 
 						"\\pretextual\n" + 
 						"\n" + 
@@ -15,19 +20,19 @@ public class ParseDocument extends Parse {
 						"\\imprimircapa\n" + 
 						"\n" + 
 						"% Comando para imprimir Folha de rosto\n" + 
-						"\\imprimirfolhaderosto{}                                     		   \n" + 
+						"\\imprimirfolhaderosto{}\n" + 
 						"\n" + 
 						"% Ficha Catalográfica\n" + 
 						"\\include{elementos/pre-textuais/ficha-catalografica}\n" + 
 						"\n" + 
 						"% Folha de Aprovação\n" + 
-						"\\include{elementos/pre-textuais/folha-aprovacao}\n" + 
+						folhaDeAprovacao + 
 						"\n" + 
 						"% Dedicatória\n" + 
 						"\\include{elementos/pre-textuais/dedicatoria}\n" + 
 						"\n" + 
 						"% Agradecimentos\n" + 
-						"\\include{elementos/pre-textuais/agradecimentos}        		\n" + 
+						"\\include{elementos/pre-textuais/agradecimentos}\n" + 
 						"\n" + 
 						"% Epígrafe\n" + 
 						"\\include{elementos/pre-textuais/epigrafe}\n" + 
@@ -79,7 +84,7 @@ public class ParseDocument extends Parse {
 						"\\include{elementos/textuais/desenvolvimento/resultados}\n" + 
 						"\n" + 
 						"% Capítulo com Orientações de uso do Template\n" + 
-						"%\\include{elementos/textuais/desenvolvimento/orientacoes}        \n" + 
+						"%\\include{elementos/textuais/desenvolvimento/orientacoes}\n" + 
 						"\n" + 
 						"% Conclusão\n" + 
 						"\\include{elementos/textuais/conclusao}\n" + 
