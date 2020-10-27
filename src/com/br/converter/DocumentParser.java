@@ -2,12 +2,12 @@ package com.br.converter;
 
 import java.io.File;
 
-import com.br.converter.parsing.ParseAbstractX;
-import com.br.converter.parsing.ParseAgradecimentos;
-import com.br.converter.parsing.ParseCapa;
-import com.br.converter.parsing.ParseDedicatoria;
-import com.br.converter.parsing.ParseEpigrafe;
-import com.br.converter.parsing.ParseResumo;
+import com.br.converter.parsing.pre_textual.ParseAbstractX;
+import com.br.converter.parsing.pre_textual.ParseAgradecimentos;
+import com.br.converter.parsing.pre_textual.ParseCapa;
+import com.br.converter.parsing.pre_textual.ParseDedicatoria;
+import com.br.converter.parsing.pre_textual.ParseEpigrafe;
+import com.br.converter.parsing.pre_textual.ParseResumo;
 import com.br.models.Documento;
 
 public class DocumentParser {

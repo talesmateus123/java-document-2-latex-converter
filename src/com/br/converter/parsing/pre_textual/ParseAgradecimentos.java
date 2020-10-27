@@ -1,5 +1,6 @@
-package com.br.converter.parsing;
+package com.br.converter.parsing.pre_textual;
 
+import com.br.converter.parsing.Parse;
 import com.br.models.Documento;
 
 public class ParseAgradecimentos extends Parse {
