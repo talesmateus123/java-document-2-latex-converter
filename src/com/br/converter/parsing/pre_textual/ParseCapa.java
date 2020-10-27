@@ -2,6 +2,7 @@ package com.br.converter.parsing.pre_textual;
 
 import com.br.converter.parsing.Parse;
 import com.br.models.Documento;
+import com.br.models.enums.TipoTrabalho;
 
 public class ParseCapa extends Parse {
 	
@@ -13,43 +14,39 @@ public class ParseCapa extends Parse {
 			case"\\subtitulo{}":
 				return document.getSubTitulo() != null ? "\\subtitulo{" + document.getSubTitulo() + "}" : "%\\subtitulo{}";
 			case"\\titleabstract{}":
-				return document.getAbstractX() != null ? "\\titleabstract{" + document.getAbstractX() + "}" : "%\\titleabstract{}";
+				return document.getElementosPreTextuais().getAbstractX() != null ? "\\titleabstract{" + document.getElementosPreTextuais().getAbstractX() + "}" : "%\\titleabstract{}";
 			case"\\autor{}":
-				return document.getAbstractX() != null ? "\\autor{autor}" : "%\\autor{}";
+				return document.getAutor() != null ? "\\autor{" + document.getAutor().getNome() + "}" : "%\\autor{}";
 			case"\\autorcitacao{}":
-				return document.getAbstractX() != null ? "\\autorcitacao{autor}" : "%\\autorcitacao{}";
+				return document.getAutor() != null ? "\\autorcitacao{" + document.getAutor().getCitacao() + "}" : "%\\autorcitacao{}";
 			case"\\local{}":
 				return document.getNomeCidade() != null ? "\\local{" + document.getNomeCidade() + "}" : "%\\local{}";
 			case"\\data{}":
-				return document.getAno() != null ? "\\data{" + Integer.toString(document.getAno()) + "}" : "%\\data{}";
+				return document.getAno() != null ? "\\data{" + document.getAno().getYear() + "}" : "%\\data{}";
 			case"\\projeto{}":
-				return null != null ? "\\projeto{" + "to implement" + "}" : "\\projeto{}";
+				return document.getTipoTrabalho() != null ? "\\projeto{" + document.getTipoTrabalho().getDescription() + "}" : "\\projeto{}";
 			case"\\tituloAcademico{}":
-				return null != null ? "\\tituloAcademico{" + "to implement" + "}" : "%\\tituloAcademico{}";
+				return document.getTituloAcademico() != null ? "\\tituloAcademico{" + document.getTituloAcademico().getDescription() + "}" : "%\\tituloAcademico{}";
 			case"\\areaconcentracao{}":
-				return null != null ? "\\areaconcentracao{" + "to implement" + "}" : "%\\areaconcentracao{}";
+				return document.getAreaConcentracao() != null ? "\\areaconcentracao{" + document.getAreaConcentracao() + "}" : "%\\areaconcentracao{}";
 			case"\\linhapesquisa{}":
-				return null != null ? "\\linhapesquisa{" + "to implement" + "}" : "%\\linhapesquisa{}";
+				return document.getLinhaPesquisa() != null ? "\\linhapesquisa{" + document.getLinhaPesquisa() + "}" : "%\\linhapesquisa{}";
 			case"\\instituicao{}":
-				return null != null ? "\\instituicao{" + "to implement" + "}" : "\\instituicao{Instituto Federal de Mato Grosso do Sul - IFMS}";
+				return document.getInstituicao().getNome() != null ? "\\instituicao{" + document.getInstituicao().getNome() + " - " + document.getInstituicao().getSigla() + "}" : "\\instituicao{" + "to implement" + "}";
 			case"\\newcommand\\instituicaosigla{}":
-				return null != null ? "\\newcommand\\instituicaosigla{" + "to implement" + "}" : "%\\newcommand\\instituicaosigla{}";
+				return document.getInstituicao().getSigla() != null ? "\\newcommand\\instituicaosigla{" + document.getInstituicao().getSigla() + "}" : "%\\newcommand\\instituicaosigla{}";
 			case"\\newcommand\\instituicaocampus{}":
-				return null != null ? "\\newcommand\\instituicaocampus{" + "to implement" + "}" : "%\\newcommand\\instituicaocampus{}";
+				return document.getInstituicao() != null ? "\\newcommand\\instituicaocampus{" + document.getInstituicao().getCampus() + "}" : "%\\newcommand\\instituicaocampus{}";
 			case"\\departamento{}":
-				return null != null ? "\\departamento{" + "to implement" + "}" : "%\\departamento{}";
+				return document.getTipoTrabalho() != TipoTrabalho.TCC && document.getInstituicao().getDepartamento() != null ? "\\departamento{" + document.getInstituicao().getDepartamento() + "}" : "%\\departamento{}";
 			case"\\programa{}":
-				return null != null ? "\\programa{" + "to implement" + "}" : "\\programa{Curso de Tecnologia em Análise e Desenvolvimento de Sistemas}";				
+				return document.getCurso() != null ? "\\programa{Curso de " + document.getCurso().getNome() + "}" : "\\programa{" + "to implement" + "}";				
 			case"\\newcommand\\programanivel{}":
-				return null != null ? "\\newcommand\\programanivel{" + "to implement" + "}" : "";
+				return document.getCurso() != null ? "\\newcommand\\programanivel{" + document.getCurso().getNivelEscolar() + "}" : "";
 			case"\\orientador{Prof. }":
-				return null != null ? "\\orientador{" + "to implement" + "}" : "%\\orientador{Prof. }";
-			case"\\instOrientador{}":
-				return null != null ? "\\instOrientador{" + "Prof. " + "to implement" + "}" : "";
+				return document.getOrientador() != null ? "\\orientador{" + document.getOrientador().getNomeCompleto() + "}" : "%\\orientador{Prof. }";
 			case"\\coorientador{Prof. }":
-				return null != null ? "\\coorientador{" + "Prof. " + "to implement" + "}" : "%\\coorientador{Prof. }";
-			case"\\instCoorientador{}":
-				return null != null ? "\\instCoorientador{" + "to implement" + "}" : "";
+				return document.getCoorientador() != null ? "\\coorientador{" + "Prof. " + document.getCoorientador().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
 			default:
 				return string;
 		}

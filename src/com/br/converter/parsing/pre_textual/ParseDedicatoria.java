@@ -9,7 +9,7 @@ public class ParseDedicatoria extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\dedicatoria":
-				return document.getDedicatoria();
+				return document.getElementosPreTextuais().getDedicatoria() != null ? document.getElementosPreTextuais().getDedicatoria() : "";
 			default:
 				return string;
 		}

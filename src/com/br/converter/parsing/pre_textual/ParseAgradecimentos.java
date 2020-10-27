@@ -9,7 +9,7 @@ public class ParseAgradecimentos extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\agradecimentos":
-				return document.getAgradecimentos();
+				return document.getElementosPreTextuais().getAgradecimentos() != null ? document.getElementosPreTextuais().getAgradecimentos() : "";
 			default:
 				return string;
 		}

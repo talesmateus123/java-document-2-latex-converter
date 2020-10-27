@@ -9,10 +9,14 @@ public class ParseAbstractX extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\abstractX":
-				return document.getA;
+				return document.getElementosPreTextuais().getAbstractX() != null ? document.getElementosPreTextuais().getAbstractX().getTexto() : "";
 			case"\\keywords":
-				// TODO Missing implementation
-				return "words";
+				String palavrasChave = "";
+				if(document.getElementosPreTextuais().getAbstractX() != null) {
+				for (String palavraChave : document.getElementosPreTextuais().getAbstractX().getPalavrasChave())
+					palavrasChave += palavraChave;
+				}
+				return palavrasChave;
 			default:
 				return string;
 		}

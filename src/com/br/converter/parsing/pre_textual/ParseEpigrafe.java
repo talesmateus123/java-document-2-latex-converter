@@ -9,7 +9,7 @@ public class ParseEpigrafe extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\epigrafe":
-				return document.getEpigrafe();
+				return document.getElementosPreTextuais().getEpigrafe() != null ? document.getElementosPreTextuais().getEpigrafe() : "";
 			default:
 				return string;
 		}

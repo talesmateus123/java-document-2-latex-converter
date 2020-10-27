@@ -1,5 +1,14 @@
 package com.br.models;
 
+import java.time.LocalDate;
+
+import com.br.models.enums.TipoTrabalho;
+import com.br.models.enums.TituloAcademico;
+import com.br.models.pre_textual.Curso;
+import com.br.models.pre_textual.ElementosPreTextuais;
+import com.br.models.pre_textual.Instituicao;
+import com.br.models.pre_textual.Pessoa;
+
 public class Documento {
 	private Long id;
 	private String titulo;
@@ -7,7 +16,7 @@ public class Documento {
 	private String title;
 	private Pessoa autor;
 	private String nomeCidade;
-	private Integer ano;
+	private LocalDate data;
 	private Integer tipoTrabalho;
 	private Integer tituloAcademico;
 	private String areaConcentracao;
@@ -27,7 +36,7 @@ public class Documento {
 	}
 	
 	public Documento(Long id, String titulo, String subTitulo, String title, Pessoa autor, String nomeCidade,
-			Integer ano, Integer tipoTrabalho, Integer tituloAcademico, String areaConcentracao, String linhaPesquisa,
+			LocalDate data, TipoTrabalho tipoTrabalho, TituloAcademico tituloAcademico, String areaConcentracao, String linhaPesquisa,
 			Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador, boolean aprovado,
 			ElementosPreTextuais elementosPreTextuais, ElementosTextuais elementosTextuais, ElementosPosTextuais elementosPosTextuais) {
 		this.id = id;
@@ -36,9 +45,9 @@ public class Documento {
 		this.title = title;
 		this.autor = autor;
 		this.nomeCidade = nomeCidade;
-		this.ano = ano;
-		this.tipoTrabalho = tipoTrabalho;
-		this.tituloAcademico = tituloAcademico;
+		this.data = data;
+		this.tipoTrabalho = tipoTrabalho != null ? tipoTrabalho.getCod() : null;
+		this.tituloAcademico = tituloAcademico != null ? tituloAcademico.getCod() : null;
 		this.areaConcentracao = areaConcentracao;
 		this.linhaPesquisa = linhaPesquisa;
 		this.instituicao = instituicao;
@@ -99,28 +108,28 @@ public class Documento {
 		this.nomeCidade = nomeCidade;
 	}
 
-	public Integer getAno() {
-		return ano;
+	public LocalDate getAno() {
+		return data;
 	}
 
-	public void setAno(Integer ano) {
-		this.ano = ano;
+	public void setAno(LocalDate data) {
+		this.data = data;
 	}
 
-	public Integer getTipoTrabalho() {
-		return tipoTrabalho;
+	public TipoTrabalho getTipoTrabalho() {
+		return TipoTrabalho.toEnum(tipoTrabalho);
 	}
 
-	public void setTipoTrabalho(Integer tipoTrabalho) {
-		this.tipoTrabalho = tipoTrabalho;
+	public void setTipoTrabalho(TipoTrabalho tipoTrabalho) {
+		this.tipoTrabalho = tipoTrabalho.getCod();
 	}
 
-	public Integer getTituloAcademico() {
-		return tituloAcademico;
+	public TituloAcademico getTituloAcademico() {
+		return TituloAcademico.toEnum(tituloAcademico);
 	}
 
-	public void setTituloAcademico(Integer tituloAcademico) {
-		this.tituloAcademico = tituloAcademico;
+	public void setTituloAcademico(TituloAcademico tituloAcademico) {
+		this.tituloAcademico = tituloAcademico.getCod();
 	}
 
 	public String getAreaConcentracao() {

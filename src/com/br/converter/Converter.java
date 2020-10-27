@@ -44,10 +44,10 @@ public class Converter {
 					bindElementosPreTextuais(elemento.listFiles());
 					break;
 				case "textuais":
-					// bindElementosTextuais(elemento.listFiles());
+					bindElementosTextuais(elemento.listFiles());
 					break;
 				case "pos-textuais":
-					// bindElementosPosTextuais(elemento.listFiles());
+					bindElementosPosTextuais(elemento.listFiles());
 					break;
 			}
 		}

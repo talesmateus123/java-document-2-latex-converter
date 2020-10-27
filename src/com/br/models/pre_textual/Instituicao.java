@@ -1,4 +1,4 @@
-package com.br.models;
+package com.br.models.pre_textual;
 
 public class Instituicao {
 	private Long id;
@@ -14,7 +14,7 @@ public class Instituicao {
 	public Instituicao(Long id, String nome, String sigla, String campus, String departamento) {
 		this.id = id;
 		this.nome = nome;
-		this.sigla = sigla;
+		this.sigla = sigla.toUpperCase();
 		this.campus = campus;
 		this.departamento = departamento;
 	}
@@ -40,7 +40,7 @@ public class Instituicao {
 	}
 
 	public void setSigla(String sigla) {
-		this.sigla = sigla;
+		this.sigla = sigla.toUpperCase();
 	}
 
 	public String getCampus() {

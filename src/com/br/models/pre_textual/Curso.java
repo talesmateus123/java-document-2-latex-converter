@@ -1,4 +1,6 @@
-package com.br.models;
+package com.br.models.pre_textual;
+
+import com.br.models.enums.NivelEscolar;
 
 public class Curso {
 	private Long id;
@@ -9,10 +11,10 @@ public class Curso {
 		
 	}
 	
-	public Curso(Long id, String nome, Integer nivelEscolar) {
+	public Curso(Long id, String nome, NivelEscolar nivelEscolar) {
 		this.id = id;
 		this.nome = nome;
-		this.nivelEscolar = nivelEscolar;
+		this.nivelEscolar = nivelEscolar != null ? nivelEscolar.getCod() : null;
 	}
 
 	public Long getId() {
@@ -31,12 +33,12 @@ public class Curso {
 		this.nome = nome;
 	}
 
-	public Integer getNivelEscolar() {
-		return nivelEscolar;
+	public NivelEscolar getNivelEscolar() {
+		return NivelEscolar.toEnum(nivelEscolar);
 	}
 
-	public void setNivelEscolar(Integer nivelEscolar) {
-		this.nivelEscolar = nivelEscolar;
+	public void setNivelEscolar(NivelEscolar nivelEscolar) {
+		this.nivelEscolar = nivelEscolar.getCod();
 	}
 
 	@Override

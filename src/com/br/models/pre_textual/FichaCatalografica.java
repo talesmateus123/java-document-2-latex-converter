@@ -1,4 +1,4 @@
-package com.br.models;
+package com.br.models.pre_textual;
 
 import java.util.List;
 

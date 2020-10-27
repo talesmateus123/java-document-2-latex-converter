@@ -9,10 +9,12 @@ public class ParseFichaCatalografica extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\palavraschave":
-				return "1. \\LaTeX.\n" + 
-						"		2. Editor WYSIWYG.\n" + 
-						"		3. Linguagens de marcação.\n" + 
-						"		4. Orientador.";
+				String palavrasChave = "";
+				if(document.getElementosPreTextuais().getFichaCatalografica() != null) {
+				for (String palavraChave : document.getElementosPreTextuais().getFichaCatalografica().getPalavrasChave())
+					palavrasChave += palavraChave;
+				}
+				return palavrasChave;
 			default:
 				return string;
 		}
