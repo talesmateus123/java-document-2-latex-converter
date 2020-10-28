@@ -5,10 +5,12 @@ import java.time.Year;
 
 import com.br.models.enums.TipoTrabalho;
 import com.br.models.enums.TituloAcademico;
+import com.br.models.pos_textual.ElementosPosTextuais;
 import com.br.models.pre_textual.Curso;
 import com.br.models.pre_textual.ElementosPreTextuais;
 import com.br.models.pre_textual.Instituicao;
 import com.br.models.pre_textual.Pessoa;
+import com.br.models.textual.ElementosTextuais;
 
 public class Documento {
 	private Long id;
@@ -27,6 +29,7 @@ public class Documento {
 	private Curso curso;
 	private Pessoa orientador;
 	private Pessoa coorientador;
+	private Options options;
 	
 	private ElementosPreTextuais elementosPreTextuais;
 	private ElementosTextuais elementosTextuais;
@@ -38,7 +41,7 @@ public class Documento {
 	
 	public Documento(Long id, String titulo, String subTitulo, String title, Pessoa autor, String nomeCidade,
 			Year ano, LocalDate dataAprovacao, TipoTrabalho tipoTrabalho, TituloAcademico tituloAcademico, String areaConcentracao, 
-			String linhaPesquisa, Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador,
+			String linhaPesquisa, Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador, Options options,
 			ElementosPreTextuais elementosPreTextuais, ElementosTextuais elementosTextuais, ElementosPosTextuais elementosPosTextuais) {
 		this.id = id;
 		this.titulo = titulo;
@@ -56,6 +59,7 @@ public class Documento {
 		this.curso = curso;
 		this.orientador = orientador;
 		this.coorientador = coorientador;
+		this.options = options;
 		this.elementosPreTextuais = elementosPreTextuais;
 		this.elementosTextuais = elementosTextuais;
 		this.elementosPosTextuais = elementosPosTextuais;
@@ -187,6 +191,14 @@ public class Documento {
 
 	public void setCoorientador(Pessoa coorientador) {
 		this.coorientador = coorientador;
+	}
+
+	public Options getOptions() {
+		return options;
+	}
+
+	public void setOptions(Options options) {
+		this.options = options;
 	}
 
 	public ElementosPreTextuais getElementosPreTextuais() {

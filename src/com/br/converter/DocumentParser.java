@@ -15,16 +15,16 @@ import com.br.converter.parsing.pre_textual.ParseResumo;
 import com.br.models.Documento;
 
 public class DocumentParser {
-	private ParseDocument parseDocument = new ParseDocument();
-	private ParseAbstractX parseAbstractX = new ParseAbstractX();
-	private ParseAgradecimentos parseAgradecimentos = new ParseAgradecimentos();
-	private ParseCapa parseCapa = new ParseCapa();
-	private ParseDedicatoria parseDedicatoria = new ParseDedicatoria();
-	private ParseEpigrafe parseEpigrafe = new ParseEpigrafe();
-	private ParseFichaCatalografica parseFichaCatalografica = new ParseFichaCatalografica();
-	private ParseFolhaAprovacao parseFolhaAprovacao = new ParseFolhaAprovacao();
-	private ParseFolhaDeRosto parseFolhaDeRosto = new ParseFolhaDeRosto();
-	private ParseResumo parseResumo = new ParseResumo();
+	private final ParseDocument parseDocument = new ParseDocument();
+	private final ParseAbstractX parseAbstractX = new ParseAbstractX();
+	private final ParseAgradecimentos parseAgradecimentos = new ParseAgradecimentos();
+	private final ParseCapa parseCapa = new ParseCapa();
+	private final ParseDedicatoria parseDedicatoria = new ParseDedicatoria();
+	private final ParseEpigrafe parseEpigrafe = new ParseEpigrafe();
+	private final ParseFichaCatalografica parseFichaCatalografica = new ParseFichaCatalografica();
+	private final ParseFolhaAprovacao parseFolhaAprovacao = new ParseFolhaAprovacao();
+	private final ParseFolhaDeRosto parseFolhaDeRosto = new ParseFolhaDeRosto();
+	private final ParseResumo parseResumo = new ParseResumo();
 	
 	/**
 	 * Esse método realiza o "parsing" entre o documento e um arquivo passados por parâmetro 

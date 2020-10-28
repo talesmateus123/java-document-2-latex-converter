@@ -3,7 +3,7 @@ package com.br.converter.parsing.textual;
 import com.br.converter.parsing.Parse;
 import com.br.models.Documento;
 
-public class ParseIntroducao extends Parse {
+public class ParseChapter extends Parse {
 	
 	@Override
 	public String persistData(String string, Documento document) {

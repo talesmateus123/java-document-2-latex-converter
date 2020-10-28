@@ -34,6 +34,92 @@
 
 \begin{document}
 
-!\document!
+% INSERE ELEMENTOS PRÉ-TEXTUAIS
+\pretextual
+
+% Comando para imprimir Capa
+\imprimircapa
+
+% Comando para imprimir Folha de rosto
+\imprimirfolhaderosto{}
+
+% Ficha Catalográfica
+!\include{elementos/pre-textuais/ficha-catalografica}!
+
+% Folha de Aprovação
+!\include{elementos/pre-textuais/folha-aprovacao}!
+
+% Dedicatória
+!\include{elementos/pre-textuais/dedicatoria}!
+
+% Agradecimentos
+!\include{elementos/pre-textuais/agradecimentos}!
+
+% Epígrafe
+!\include{elementos/pre-textuais/epigrafe}!
+
+%obrigatorio
+% Resumo em Português
+\include{elementos/pre-textuais/resumo}
+%obrigatorio
+% Resumo em Inglês
+\include{elementos/pre-textuais/abstract}
+
+% Lista de Figuras
+!\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-figuras}!
+
+% Lista de Quadros
+!\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-quadros}!
+
+% Lista de Tabelas
+!\include{elementos/pre-textuais/listas/lista-tabelas}!
+
+% Lista de Abreviaturas e Siglas
+!\include{elementos/pre-textuais/listas/lista-siglas}!
+
+% Lista de Símbolos
+!\include{elementos/pre-textuais/listas/lista-simbolos}!
+
+% Lista de Algoritmos
+!\include{elementos/pre-textuais/listas/listas-diversas/lista-algoritmos}!
+
+% Sumário
+\include{elementos/pre-textuais/sumario}
+
+% INSERE ELEMENTOS TEXTUAIS
+\textual
+
+% Introdução
+!\include{elementos/textuais/introducao}!
+
+% Ref. teorico
+!\include{elementos/textuais/referencial_teorico}!
+
+% Revisão de Literatura
+!\include{elementos/textuais/desenvolvimento/revisao-de-literatura}!
+
+% Metodologia
+!\include{elementos/textuais/desenvolvimento/metodologia}!
+
+% Resultados
+!\include{elementos/textuais/desenvolvimento/resultados}!
+
+% Capítulo com Orientações de uso do Template
+%\include{elementos/textuais/desenvolvimento/orientacoes}
+
+% Conclusão
+!\include{elementos/textuais/conclusao}!
+
+% INSERE ELEMENTOS PÓS-TEXTUAIS
+\postextual
+
+% Referências
+!\include{elementos/pos-textuais/referencias}!
+
+% Apêndices
+!\include{elementos/pos-textuais/apendices}!
+
+% Anexos
+!\include{elementos/pos-textuais/anexos}!
 
 \end{document}

@@ -11,7 +11,7 @@ import java.util.Date;
 import com.br.models.Documento;
 
 public class Converter {
-	private DocumentParser documentParser = new DocumentParser();
+	private final DocumentParser documentParser = new DocumentParser();
 	private Documento documento;
 	
 	public void toConvert(Documento documento) throws IOException {
