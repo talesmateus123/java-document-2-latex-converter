@@ -20,7 +20,7 @@ public class Converter {
 	}
 	
 	private void parseDocumentToTemplate() throws IOException {
-		File templateFile = new File("resources/templates/monografia");
+		File templateFile = new File("src/main/resources/templates/monografia");
 
 		String mainDirectoryPath = generateFileName();
         File mainDirectory = new File(mainDirectoryPath);
