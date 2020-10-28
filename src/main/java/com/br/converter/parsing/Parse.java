@@ -17,9 +17,8 @@ public abstract class Parse {
 	public void parse(File file, Documento document) {
 		List<String> splitedData = ConverterUtil.splitData(ConverterUtil.readFile(file));
 		
-		splitedData = splitedData.stream().map(part -> {
-			return part;
-		}).collect(Collectors.toList());
+		splitedData = splitedData.stream().map(part -> persistData(part, document))
+				.collect(Collectors.toList());
 		
 		ConverterUtil.writeFile(file, splitStringToString(splitedData));
 	}

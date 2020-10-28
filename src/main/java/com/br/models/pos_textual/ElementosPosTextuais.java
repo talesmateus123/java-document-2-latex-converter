@@ -1,20 +1,18 @@
 package com.br.models.pos_textual;
 
-import java.util.List;
-
-import com.br.models.Capitulo;
-
 public class ElementosPosTextuais {
 	private Long id;
-	private List<Capitulo> capitulos;
+	private Apendices apendices;
+	private Anexos anexos;
 
 	public ElementosPosTextuais() {
 		
 	}
 
-	public ElementosPosTextuais(Long id, List<Capitulo> capitulos) {
+	public ElementosPosTextuais(Long id, Apendices apendice, Anexos anexos) {
 		this.id = id;
-		this.capitulos = capitulos;
+		this.apendices = apendice;
+		this.anexos = anexos;
 	}
 
 	public Long getId() {
@@ -25,12 +23,20 @@ public class ElementosPosTextuais {
 		this.id = id;
 	}
 
-	public List<Capitulo> getCapitulos() {
-		return capitulos;
+	public Apendices getApendices() {
+		return apendices;
 	}
 
-	public void setCapitulos(List<Capitulo> capitulos) {
-		this.capitulos = capitulos;
+	public void setApendices(Apendices apendices) {
+		this.apendices = apendices;
+	}
+
+	public Anexos getAnexos() {
+		return anexos;
+	}
+
+	public void setAnexos(Anexos anexos) {
+		this.anexos = anexos;
 	}
 
 	@Override

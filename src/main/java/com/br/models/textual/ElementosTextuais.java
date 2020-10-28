@@ -1,5 +1,6 @@
 package com.br.models.textual;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.br.models.Capitulo;
@@ -9,12 +10,12 @@ public class ElementosTextuais {
 	private List<Capitulo> capitulos;
 
 	public ElementosTextuais() {
-		
+		this.capitulos = new ArrayList<Capitulo>();
 	}
 
 	public ElementosTextuais(Long id, List<Capitulo> capitulos) {
 		this.id = id;
-		this.capitulos = capitulos;
+		this.capitulos = capitulos != null ? capitulos : new ArrayList<Capitulo>();
 	}
 
 	public Long getId() {

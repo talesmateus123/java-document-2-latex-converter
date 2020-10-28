@@ -1,12 +1,10 @@
 package com.br.tests;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.Year;
 
 import com.br.converter.Converter;
 import com.br.models.Documento;
-import com.br.models.Options;
 import com.br.models.enums.NivelEscolar;
 import com.br.models.enums.TipoPessoa;
 import com.br.models.enums.TipoTrabalho;
@@ -32,15 +30,14 @@ public class DocumentTests {
 		ElementosTextuais elementosTextuais = new ElementosTextuais();
 		ElementosPosTextuais elementosPosTextuais = new ElementosPosTextuais();
 		
-		Options options = new Options();
-		
 		Documento documento = new Documento(null, "O desenvolvimento de software na era contemporânea", null, 
 				"The software development in the contemporary era", autor, "Corumbá", 
-				Year.now(), LocalDate.now(), TipoTrabalho.TCC, TituloAcademico.TECNOLOGO, null, null, 
-				instituicao, curso, orientador, coorientador, options, elementosPreTextuais, elementosTextuais, 
+				Year.now(), null, TipoTrabalho.TCC, TituloAcademico.TECNOLOGO, null, null, 
+				instituicao, curso, orientador, coorientador, elementosPreTextuais, elementosTextuais, 
 				elementosPosTextuais);
 		
 		Converter converter = new Converter();
+		
 		try {
 			converter.toConvert(documento);
 		} 

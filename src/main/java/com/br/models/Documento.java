@@ -29,7 +29,6 @@ public class Documento {
 	private Curso curso;
 	private Pessoa orientador;
 	private Pessoa coorientador;
-	private Options options;
 	
 	private ElementosPreTextuais elementosPreTextuais;
 	private ElementosTextuais elementosTextuais;
@@ -41,7 +40,7 @@ public class Documento {
 	
 	public Documento(Long id, String titulo, String subTitulo, String title, Pessoa autor, String nomeCidade,
 			Year ano, LocalDate dataAprovacao, TipoTrabalho tipoTrabalho, TituloAcademico tituloAcademico, String areaConcentracao, 
-			String linhaPesquisa, Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador, Options options,
+			String linhaPesquisa, Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador,
 			ElementosPreTextuais elementosPreTextuais, ElementosTextuais elementosTextuais, ElementosPosTextuais elementosPosTextuais) {
 		this.id = id;
 		this.titulo = titulo;
@@ -59,7 +58,6 @@ public class Documento {
 		this.curso = curso;
 		this.orientador = orientador;
 		this.coorientador = coorientador;
-		this.options = options;
 		this.elementosPreTextuais = elementosPreTextuais;
 		this.elementosTextuais = elementosTextuais;
 		this.elementosPosTextuais = elementosPosTextuais;
@@ -193,14 +191,6 @@ public class Documento {
 		this.coorientador = coorientador;
 	}
 
-	public Options getOptions() {
-		return options;
-	}
-
-	public void setOptions(Options options) {
-		this.options = options;
-	}
-
 	public ElementosPreTextuais getElementosPreTextuais() {
 		return elementosPreTextuais;
 	}
@@ -223,6 +213,17 @@ public class Documento {
 
 	public void setElementosPosTextuais(ElementosPosTextuais elementosPosTextuais) {
 		this.elementosPosTextuais = elementosPosTextuais;
+	}
+
+	@Override
+	public String toString() {
+		return "Documento [id=" + id + ", titulo=" + titulo + ", subTitulo=" + subTitulo + ", title=" + title
+				+ ", autor=" + autor + ", nomeCidade=" + nomeCidade + ", ano=" + ano + ", dataAprovacao="
+				+ dataAprovacao + ", tipoTrabalho=" + tipoTrabalho + ", tituloAcademico=" + tituloAcademico
+				+ ", areaConcentracao=" + areaConcentracao + ", linhaPesquisa=" + linhaPesquisa + ", instituicao="
+				+ instituicao + ", curso=" + curso + ", orientador=" + orientador + ", coorientador=" + coorientador
+				+ ", elementosPreTextuais=" + elementosPreTextuais + ", elementosTextuais=" + elementosTextuais 
+				+ ", elementosPosTextuais=" + elementosPosTextuais + "]";
 	}
 
 	@Override

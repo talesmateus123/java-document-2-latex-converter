@@ -1,18 +1,21 @@
-package com.br.models;
+package com.br.models.pos_textual;
 
-public class Capitulo {
+import java.util.ArrayList;
+import java.util.List;
+
+import com.br.models.Capitulo;
+
+public class Anexos {
 	private Long id;
-	private String titulo;
-	private String body;
+	private List<Capitulo> capitulos;
 	
-	public Capitulo() {
-		
+	public Anexos() {
+		this.capitulos = new ArrayList<Capitulo>();
 	}
-	
-	public Capitulo(Long id, String titulo, String body) {
+
+	public Anexos(Long id, List<Capitulo> capitulos) {
 		this.id = id;
-		this.titulo = titulo;
-		this.body = body;
+		this.capitulos = capitulos != null ? capitulos : new ArrayList<Capitulo>();
 	}
 
 	public Long getId() {
@@ -23,24 +26,12 @@ public class Capitulo {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public List<Capitulo> getCapitulos() {
+		return capitulos;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public String getBody() {
-		return body;
-	}
-
-	public void setBody(String body) {
-		this.body = body;
-	}
-	
-	public String getLabel() {
-		return this.titulo.toLowerCase().replace(" ", "_");
+	public void setCapitulos(List<Capitulo> capitulos) {
+		this.capitulos = capitulos;
 	}
 
 	@Override
@@ -50,7 +41,7 @@ public class Capitulo {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -59,7 +50,7 @@ public class Capitulo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Capitulo other = (Capitulo) obj;
+		Anexos other = (Anexos) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -67,5 +58,5 @@ public class Capitulo {
 			return false;
 		return true;
 	}
-	
+
 }

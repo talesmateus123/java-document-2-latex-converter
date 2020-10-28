@@ -1,5 +1,7 @@
 package com.br.models.pre_textual;
 
+import com.br.models.components.Lista;
+
 public class ElementosPreTextuais {
 	private Long id;
 	private Resumo abstractX;
@@ -9,13 +11,24 @@ public class ElementosPreTextuais {
 	private FichaCatalografica fichaCatalografica;
 	private String preAmbulo;
 	private Resumo resumo;
+	private Lista listaSiglas;
+	private Lista listaSimbolos;
+	
+
+	/*
+	% Lista de Abreviaturas e Siglas
+	!\include{elementos/pre-textuais/listas/lista-siglas}!
+
+	% Lista de Símbolos
+	!\include{elementos/pre-textuais/listas/lista-simbolos}!
+	 */
 
 	public ElementosPreTextuais() {
 		
 	}
 
 	public ElementosPreTextuais(Long id, Resumo abstractX, String agradecimentos, String dedicatoria, String epigrafe,
-			FichaCatalografica fichaCatalografica, String preAmbulo, Resumo resumo) {
+			FichaCatalografica fichaCatalografica, String preAmbulo, Resumo resumo, Lista listaSiglas, Lista listaSimbolos) {
 		this.id = id;
 		this.abstractX = abstractX;
 		this.agradecimentos = agradecimentos;
@@ -24,6 +37,8 @@ public class ElementosPreTextuais {
 		this.fichaCatalografica = fichaCatalografica;
 		this.preAmbulo = preAmbulo;
 		this.resumo = resumo;
+		this.listaSiglas = listaSiglas;
+		this.listaSimbolos = listaSimbolos;
 	}
 
 	public Long getId() {
@@ -88,6 +103,22 @@ public class ElementosPreTextuais {
 
 	public void setResumo(Resumo resumo) {
 		this.resumo = resumo;
+	}
+
+	public Lista getListaSiglas() {
+		return listaSiglas;
+	}
+
+	public void setListaSiglas(Lista listaSiglas) {
+		this.listaSiglas = listaSiglas;
+	}
+
+	public Lista getListaSimbolos() {
+		return listaSimbolos;
+	}
+
+	public void setListaSimbolos(Lista listaSimbolos) {
+		this.listaSimbolos = listaSimbolos;
 	}
 
 	@Override
