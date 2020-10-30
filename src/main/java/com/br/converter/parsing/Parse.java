@@ -13,6 +13,7 @@ public abstract class Parse {
 	 * Persiste os dados do documento em um arquivo.
 	 * @param file
 	 * @param document
+	 * @return void
 	 */
 	public void parse(File file, Documento document) {
 		List<String> splitedData = ConverterUtil.splitData(ConverterUtil.readFile(file));
@@ -20,7 +21,7 @@ public abstract class Parse {
 		splitedData = splitedData.stream().map(part -> persistData(part, document))
 				.collect(Collectors.toList());
 		
-		ConverterUtil.writeFile(file, splitStringToString(splitedData));
+		ConverterUtil.writeFile(file, splitListStringToString(splitedData));
 	}
 
 	/**
@@ -38,7 +39,7 @@ public abstract class Parse {
 	 * @param splitedStrings
 	 * @return string
 	 */
-	private String splitStringToString(List<String> splitedStrings) {
+	protected String splitListStringToString(List<String> splitedStrings) {
 		String string = new String();
 		for(String part : splitedStrings)
 			string += part;

@@ -57,4 +57,12 @@ public class ConverterUtil {
 		return Arrays.asList(string.split("!"));
 	}
 	
+	public static void createFile(File file) {
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

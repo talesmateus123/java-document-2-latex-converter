@@ -6,13 +6,14 @@ public class ElementosPosTextuais {
 	private Anexos anexos;
 
 	public ElementosPosTextuais() {
-		
+		this.apendices = new Apendices();
+		this.anexos = new Anexos();
 	}
 
-	public ElementosPosTextuais(Long id, Apendices apendice, Anexos anexos) {
+	public ElementosPosTextuais(Long id, Apendices apendices, Anexos anexos) {
 		this.id = id;
-		this.apendices = apendice;
-		this.anexos = anexos;
+		this.apendices = apendices != null ? apendices : new Apendices();
+		this.anexos = anexos != null ? anexos : new Anexos();
 	}
 
 	public Long getId() {

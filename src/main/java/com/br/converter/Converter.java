@@ -7,12 +7,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
+import java.util.List;
 
+import com.br.converter.util.ConverterUtil;
+import com.br.models.Capitulo;
 import com.br.models.Documento;
 
 public class Converter {
 	private final DocumentParser documentParser = new DocumentParser();
 	private Documento documento;
+	String mainDirectoryPath;
 	
 	public void toConvert(Documento documento) throws IOException {
 		this.documento = documento;
@@ -22,42 +26,31 @@ public class Converter {
 	private void parseDocumentToTemplate() throws IOException {
 		File templateFile = new File("src/main/resources/templates/monografia");
 
-		String mainDirectoryPath = generateFileName();
-        File mainDirectory = new File(mainDirectoryPath);
+		generateFileName();
+		
+        File mainDirectory = new File(this.mainDirectoryPath);
         mainDirectory.mkdirs();
         
-        File fileCopied = new File(mainDirectoryPath);
+        File fileCopied = new File(this.mainDirectoryPath);
 		
 		copyFolder(templateFile, fileCopied);
 		
-		File[] elementos = new File(fileCopied.getPath() + "/elementos").listFiles();
-		File document = new File(fileCopied.getPath() + "/tcc.tex");
-		
-		parseDocument(document);
-		parseElementos(elementos);
+		parseDocument();
+		parseElementosPreTextuais();
+		parseElementosTextuais();
+		parseElementosPosTextuaisApendices();
+		parseElementosPosTextuaisAnexos();
 	}
 	
-	private void parseDocument(File document) {
+	private void parseDocument() {
+		File document = new File(this.mainDirectoryPath + "/tcc.tex");
 		documentParser.parseDocument(document, documento);
 	}
 	
-	private void parseElementos(File[] elementos) {
-		for (File elemento : elementos) {
-			switch(elemento.getName()) {
-				case "pre-textuais":
-					parseElementosPreTextuais(elemento.listFiles());
-					break;
-				case "textuais":
-					parseElementosTextuais(elemento.listFiles());
-					break;
-				case "pos-textuais":
-					parseElementosPosTextuais(elemento.listFiles());
-					break;
-			}
-		}
-	}
-	
-	private void parseElementosPreTextuais(File[] elementos) {
+	private void parseElementosPreTextuais() {
+		File directory = new File(this.mainDirectoryPath + "/elementos/pre-textuais");
+		File[] elementos = directory.listFiles();
+		
 		for(File file : elementos) {
 			switch(file.getName()) {
 				case "abstract.tex":
@@ -90,12 +83,28 @@ public class Converter {
 		}
 	}
 	
-	private void parseElementosTextuais(File[] elementos) {
-		// TODO To implement
+	private void parseElementosTextuais() {
+		for(Capitulo capitulo : this.documento.getElementosTextuais().getCapitulos()) {
+			File file = new File(this.mainDirectoryPath + "/elementos/textuais/" + capitulo.getLabel() + ".tex");
+			ConverterUtil.createFile(file);
+			documentParser.parseElementosTextuais(file, capitulo);
+		}
 	}
-	
-	private void parseElementosPosTextuais(File[] elementos) {
-		// TODO To implement
+
+	private void parseElementosPosTextuaisApendices() {
+		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getApendices().getCapitulos();
+		if(!capitulos.isEmpty()) {
+			File file = new File(this.mainDirectoryPath + "/elementos/pos-textuais/apendices.tex");
+			documentParser.parseElementosPosTextuais(file, capitulos);
+		}
+	}
+
+	private void parseElementosPosTextuaisAnexos() {
+		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getAnexos().getCapitulos();
+		if(!capitulos.isEmpty()) {
+			File file = new File(this.mainDirectoryPath + "/elementos/pos-textuais/anexos.tex");
+			documentParser.parseElementosPosTextuais(file, capitulos);
+		}
 	}
 	
 	private void copyFolder(File src, File dest) throws IOException {
@@ -126,8 +135,8 @@ public class Converter {
 	    }
 	}
 	
-	private String generateFileName() {
-		return "/tmp/document-converter-2-latex/" + new Date().getTime();
+	private void generateFileName() {
+		this.mainDirectoryPath = "/tmp/document-converter-2-latex/" + new Date().getTime();
 	}
 	
 }

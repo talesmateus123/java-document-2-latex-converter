@@ -1,8 +1,10 @@
 package com.br.converter;
 
 import java.io.File;
+import java.util.List;
 
 import com.br.converter.parsing.ParseDocument;
+import com.br.converter.parsing.pos_textual.ParseElementosPosTextuais;
 import com.br.converter.parsing.pre_textual.ParseAbstractX;
 import com.br.converter.parsing.pre_textual.ParseAgradecimentos;
 import com.br.converter.parsing.pre_textual.ParseCapa;
@@ -12,6 +14,8 @@ import com.br.converter.parsing.pre_textual.ParseFichaCatalografica;
 import com.br.converter.parsing.pre_textual.ParseFolhaAprovacao;
 import com.br.converter.parsing.pre_textual.ParseFolhaDeRosto;
 import com.br.converter.parsing.pre_textual.ParseResumo;
+import com.br.converter.parsing.textual.ParseElementosTextuais;
+import com.br.models.Capitulo;
 import com.br.models.Documento;
 
 public class DocumentParser {
@@ -25,6 +29,8 @@ public class DocumentParser {
 	private final ParseFolhaAprovacao parseFolhaAprovacao = new ParseFolhaAprovacao();
 	private final ParseFolhaDeRosto parseFolhaDeRosto = new ParseFolhaDeRosto();
 	private final ParseResumo parseResumo = new ParseResumo();
+	private final ParseElementosTextuais parseElementosTextuais = new ParseElementosTextuais();
+	private final ParseElementosPosTextuais parseElementosPosTextuais = new ParseElementosPosTextuais();
 	
 	/**
 	 * Esse método realiza o "parsing" entre o documento e um arquivo passados por parâmetro 
@@ -134,6 +140,28 @@ public class DocumentParser {
 	 */
 	public void parseResumo(File file, Documento document) {
 		this.parseResumo.parse(file, document);
+	}
+	
+	/**
+	 * Esse método realiza o "parsing" entre o documento e um arquivo passados por parâmetro 
+	 * 
+	 * @param file
+	 * @param documento
+	 * @return void
+	 */
+	public void parseElementosTextuais(File file, Capitulo capitulo) {
+		this.parseElementosTextuais.parse(file, capitulo);
+	}
+	
+	/**
+	 * Esse método realiza o "parsing" entre o documento e um arquivo passados por parâmetro 
+	 * 
+	 * @param file
+	 * @param documento
+	 * @return void
+	 */
+	public void parseElementosPosTextuais(File file, List<Capitulo> capitulos) {
+		this.parseElementosPosTextuais.parse(file, capitulos);
 	}
 	
 }
