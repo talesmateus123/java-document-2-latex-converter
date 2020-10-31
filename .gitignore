@@ -12,6 +12,8 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.attach_pid4681
+.attach_pid75430
 
 ### IntelliJ IDEA ###
 .idea

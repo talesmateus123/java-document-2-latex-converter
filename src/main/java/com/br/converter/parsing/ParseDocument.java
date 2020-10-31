@@ -43,10 +43,8 @@ public class ParseDocument extends Parse {
 	}
 	
 	private String fregre(List<Capitulo> capitulos) {
-		return capitulos.stream().map(capitulo -> {
-			return 
-					"\n\t% " + capitulo.getTitulo() + "\n\t\\include{elementos/textuais/" + capitulo.getLabel() + "}\n";
-		}).collect(Collectors.joining());
+		return capitulos.stream().map(capitulo -> "\n\t% " + capitulo.getTitulo() + "\n\t\\include{elementos/textuais/" 
+				+ capitulo.getLabel() + "}\n").collect(Collectors.joining());
 	}
 
 }
