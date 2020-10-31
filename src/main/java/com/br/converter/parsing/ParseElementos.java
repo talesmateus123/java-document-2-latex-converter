@@ -12,11 +12,12 @@ public class ParseElementos extends Parse {
 	 * @return string
 	 */
 	protected String persistCapitulo(Capitulo capitulo) {
+		String isUnlisted = capitulo.isUnlisted() ? "*" : "";
 		return 
 				"% ----------------------------------------------------------\n" +
 				"% " + capitulo.getTitulo() + "\n" +
 				"% ----------------------------------------------------------\n" +
-				"\\chapter{" + capitulo.getTitulo() + "}" +
+				"\\chapter" + isUnlisted + "{" + capitulo.getTitulo() + "}" +
 				"\n" +
 				"\t\\label{chap:" + capitulo.getLabel() + "}" +
 				"\n" +

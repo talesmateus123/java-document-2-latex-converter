@@ -4,17 +4,26 @@ public class Capitulo {
 	private Long id;
 	private String titulo;
 	private String body;
+	private boolean unlisted;
 	
 	public Capitulo() {
-		
+		this.unlisted = false;
 	}
 	
 	public Capitulo(Long id, String titulo, String body) {
 		this.id = id;
 		this.titulo = titulo;
 		this.body = body;
+		this.unlisted = false;
 	}
 
+	public Capitulo(Long id, String titulo, String body, boolean unlisted) {
+		this.id = id;
+		this.titulo = titulo;
+		this.body = body;
+		this.unlisted = unlisted;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +46,14 @@ public class Capitulo {
 
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+	public boolean isUnlisted() {
+		return unlisted;
+	}
+
+	public void setUnlisted(boolean unlisted) {
+		this.unlisted = unlisted;
 	}
 	
 	public String getLabel() {

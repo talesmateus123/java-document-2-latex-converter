@@ -1,5 +1,9 @@
 package com.br.converter.parsing;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.br.models.Capitulo;
 import com.br.models.Documento;
 
 public class ParseDocument extends Parse {
@@ -26,17 +30,23 @@ public class ParseDocument extends Parse {
 				return document.getElementosPreTextuais().getListaSimbolos() != null ? "\\include{elementos/pre-textuais/listas/lista-simbolos}"
 						: "%\\include{elementos/pre-textuais/listas/lista-simbolos}";
 			case"\\include{elementos/pos-textuais/apendices}":
-				return document.getElementosPosTextuais().getApendices() != null ? "\\include{elementos/pos-textuais/apendices}" 
+				return !document.getElementosPosTextuais().getApendices().getCapitulos().isEmpty() ? "\\include{elementos/pos-textuais/apendices}" 
 						: "%\\include{elementos/pos-textuais/apendices}";
 			case"\\include{elementos/pos-textuais/anexos}":
-				return document.getElementosPosTextuais().getAnexos() != null ? "\\include{elementos/pos-textuais/anexos}" 
+				return !document.getElementosPosTextuais().getAnexos().getCapitulos().isEmpty() ? "\\include{elementos/pos-textuais/anexos}" 
 						: "%\\include{elementos/pos-textuais/anexos}";
 			case"\\elementostextuais":
-				// TODO Implement parsing for "capitulos"
-				return "";
+				return !document.getElementosTextuais().getCapitulos().isEmpty() ? fregre(document.getElementosTextuais().getCapitulos()) : "";
 			default:
 				return string;
 		}
+	}
+	
+	private String fregre(List<Capitulo> capitulos) {
+		return capitulos.stream().map(capitulo -> {
+			return 
+					"\n\t% " + capitulo.getTitulo() + "\n\t\\include{elementos/textuais/" + capitulo.getLabel() + "}\n";
+		}).collect(Collectors.joining());
 	}
 
 }
