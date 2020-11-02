@@ -16,6 +16,7 @@ import com.br.components.converter.DocumentParserComponent;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 import com.br.util.ConverterFileUtil;
+import com.br.util.ZipFileUtil;
 
 @Service
 public class ConverterService {
@@ -47,8 +48,8 @@ public class ConverterService {
 		parseElementosPosTextuaisApendices();
 		parseElementosPosTextuaisAnexos();
 		this.documento = null;
-		
-		// zip fileCopied
+
+		ZipFileUtil.zipDirectory(fileCopied, fileCopied.getPath());
 	}
 	
 	private void parseDocument() {
@@ -93,7 +94,8 @@ public class ConverterService {
 	}
 	
 	private void parseElementosTextuais() {
-		for(Capitulo capitulo : this.documento.getElementosTextuais().getCapitulos()) {
+		List<Capitulo> capitulos = this.documento.getElementosTextuais().getCapitulos();
+		for(Capitulo capitulo : capitulos) {
 			File file = new File(this.mainDirectoryPath + "/elementos/textuais/" + capitulo.getLabel() + ".tex");
 			ConverterFileUtil.createFile(file);
 			documentParser.parseElementosTextuais(file, capitulo);
