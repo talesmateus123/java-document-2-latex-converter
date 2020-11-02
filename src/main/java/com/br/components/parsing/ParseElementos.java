@@ -1,7 +1,7 @@
-package com.br.converter.parsing;
+package com.br.components.parsing;
 
-import com.br.converter.util.Html2LatexUtil;
 import com.br.models.Capitulo;
+import com.br.util.Html2LatexUtil;
 
 public class ParseElementos extends Parse {
 	
@@ -19,7 +19,7 @@ public class ParseElementos extends Parse {
 				"% ----------------------------------------------------------\n" +
 				"\\chapter" + isUnlisted + "{" + capitulo.getTitulo() + "}" +
 				"\n" +
-				"\t\\label{chap:" + capitulo.getLabel() + "}" +
+				"\\label{chap:" + capitulo.getLabel() + "}" +
 				"\n" +
 				"\t" + Html2LatexUtil.toConvert(capitulo.getBody()) + 
 				"\n" +

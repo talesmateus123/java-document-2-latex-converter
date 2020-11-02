@@ -1,10 +1,13 @@
-package com.br.converter.parsing.pre_textual;
+package com.br.components.parsing.pre_textual;
 
-import com.br.converter.parsing.Parse;
+import org.springframework.stereotype.Component;
+
+import com.br.components.parsing.Parse;
 import com.br.models.Documento;
 import com.br.models.enums.TipoTrabalho;
 import com.br.models.enums.TituloAcademico;
 
+@Component
 public class ParseCapa extends Parse {
 	
 	@Override
@@ -55,9 +58,9 @@ public class ParseCapa extends Parse {
 				return document.getCurso() != null ? "\\programa{Curso " + tituloAcademico + " em " + document.getCurso().getNome() + "}" : "\\programa{" + "Nome do curso" + "}";				
 			case"\\newcommand\\programanivel{}":
 				return document.getCurso() != null ? "\\newcommand\\programanivel{" + document.getCurso().getNivelEscolar() + "}" : "";
-			case"\\orientador{Prof. }":
+			case"\\orientador{}":
 				return document.getOrientador() != null ? "\\orientador{" + document.getOrientador().getNomeCompleto() + "}" : "%\\orientador{Prof. }";
-			case"\\coorientador{Prof. }":
+			case"\\coorientador{}":
 				return document.getCoorientador() != null ? "\\coorientador{" + "Prof. " + document.getCoorientador().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
 			default:
 				return string;

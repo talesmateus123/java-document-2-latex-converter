@@ -1,4 +1,4 @@
-package com.br.converter.util;
+package com.br.util;
 
 import java.util.List;
 
@@ -117,7 +117,7 @@ public class Html2LatexUtil {
 	}
 	
 	// TODO Falta tratar todos os caracteres especiais do LaTeX
-	private static String handleSpecialCharacters(String text) {
+	public static String handleSpecialCharacters(String text) {
 		if (text.contains("\""))
 			text = text.replaceAll("\" ", "\"{} ");
 		

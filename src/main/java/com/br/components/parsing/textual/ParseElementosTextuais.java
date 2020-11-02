@@ -1,11 +1,14 @@
-package com.br.converter.parsing.textual;
+package com.br.components.parsing.textual;
 
 import java.io.File;
 
-import com.br.converter.parsing.ParseElementos;
-import com.br.converter.util.ConverterFileUtil;
-import com.br.models.Capitulo;
+import org.springframework.stereotype.Component;
 
+import com.br.components.parsing.ParseElementos;
+import com.br.models.Capitulo;
+import com.br.util.ConverterFileUtil;
+
+@Component
 public class ParseElementosTextuais extends ParseElementos {
 	
 	/**

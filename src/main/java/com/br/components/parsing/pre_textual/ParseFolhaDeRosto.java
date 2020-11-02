@@ -1,9 +1,12 @@
-package com.br.converter.parsing.pre_textual;
+package com.br.components.parsing.pre_textual;
 
-import com.br.converter.parsing.Parse;
+import org.springframework.stereotype.Component;
+
+import com.br.components.parsing.Parse;
 import com.br.models.Documento;
 import com.br.models.enums.TipoTrabalho;
 
+@Component
 public class ParseFolhaDeRosto extends Parse {
 
 	@Override

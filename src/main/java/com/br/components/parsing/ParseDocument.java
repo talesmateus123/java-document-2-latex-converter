@@ -1,11 +1,14 @@
-package com.br.converter.parsing;
+package com.br.components.parsing;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Component;
+
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 
+@Component
 public class ParseDocument extends Parse {
 
 	@Override
@@ -36,13 +39,13 @@ public class ParseDocument extends Parse {
 				return !document.getElementosPosTextuais().getAnexos().getCapitulos().isEmpty() ? "\\include{elementos/pos-textuais/anexos}" 
 						: "%\\include{elementos/pos-textuais/anexos}";
 			case"\\elementostextuais":
-				return !document.getElementosTextuais().getCapitulos().isEmpty() ? fregre(document.getElementosTextuais().getCapitulos()) : "";
+				return !document.getElementosTextuais().getCapitulos().isEmpty() ? includeCapitulos(document.getElementosTextuais().getCapitulos()) : "";
 			default:
 				return string;
 		}
 	}
 	
-	private String fregre(List<Capitulo> capitulos) {
+	private String includeCapitulos(List<Capitulo> capitulos) {
 		return capitulos.stream().map(capitulo -> "\n\t% " + capitulo.getTitulo() + "\n\t\\include{elementos/textuais/" 
 				+ capitulo.getLabel() + "}\n").collect(Collectors.joining());
 	}

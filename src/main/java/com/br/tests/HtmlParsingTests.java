@@ -1,6 +1,6 @@
 package com.br.tests;
 
-import com.br.converter.util.Html2LatexUtil;
+import com.br.util.Html2LatexUtil;
 
 public class HtmlParsingTests {
 	public static void initTests() {

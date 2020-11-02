@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.Year;
 import java.util.Arrays;
 
-import com.br.converter.Converter;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 import com.br.models.enums.NivelEscolar;
@@ -19,6 +18,7 @@ import com.br.models.pre_textual.ElementosPreTextuais;
 import com.br.models.pre_textual.Instituicao;
 import com.br.models.pre_textual.Pessoa;
 import com.br.models.textual.ElementosTextuais;
+import com.br.services.Converter;
 
 public class DocumentTests {
 	public static void initTests() {
@@ -33,7 +33,15 @@ public class DocumentTests {
 		ElementosPreTextuais elementosPreTextuais = new ElementosPreTextuais();
 		ElementosTextuais elementosTextuais = new ElementosTextuais();
 		
-		Capitulo capitulo1 = new Capitulo(null, "Introducao", "body");
+		Capitulo capitulo1 = new Capitulo(null, "Introducao", 
+				"<p>Parágrafo 1</p>"
+				+ "<h1>Seção 1</h1>"
+				+ "<p>Parágrafo 1 <a href=\"https://www.google.com/\">Link</a></p>"
+				+ "<p>Parágrafo 2 <b>texto em negrito</b></p>"
+				+ "<h2>Subseção 1</h2>"
+				+ "<p>Lista ordenada:</p>"
+				+ "<ol><li>Item 1</li> <li>Item 2</li></ol>"
+				);
 		Capitulo capitulo2 = new Capitulo(null, "Desenvolvimento", "body");
 		Capitulo capitulo3 = new Capitulo(null, "Conclusao", "body");
 		

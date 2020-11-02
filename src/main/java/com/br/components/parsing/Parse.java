@@ -1,11 +1,11 @@
-package com.br.converter.parsing;
+package com.br.components.parsing;
 
 import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.br.converter.util.ConverterFileUtil;
 import com.br.models.Documento;
+import com.br.util.ConverterFileUtil;
 
 public abstract class Parse {
 	

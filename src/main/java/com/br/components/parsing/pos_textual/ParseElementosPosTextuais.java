@@ -1,13 +1,16 @@
-package com.br.converter.parsing.pos_textual;
+package com.br.components.parsing.pos_textual;
 
 import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.br.converter.parsing.ParseElementos;
-import com.br.converter.util.ConverterFileUtil;
-import com.br.models.Capitulo;
+import org.springframework.stereotype.Component;
 
+import com.br.components.parsing.ParseElementos;
+import com.br.models.Capitulo;
+import com.br.util.ConverterFileUtil;
+
+@Component
 public class ParseElementosPosTextuais extends ParseElementos {
 	
 	/**

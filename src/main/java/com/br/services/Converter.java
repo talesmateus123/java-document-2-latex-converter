@@ -1,4 +1,4 @@
-package com.br.converter;
+package com.br.services;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,12 +9,18 @@ import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 
-import com.br.converter.util.ConverterFileUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.br.components.converter.DocumentParser;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
+import com.br.util.ConverterFileUtil;
 
+@Service
 public class Converter {
-	private final DocumentParser documentParser = new DocumentParser();
+	@Autowired
+	private DocumentParser documentParser;
 	private Documento documento;
 	private String mainDirectoryPath;
 	
@@ -40,6 +46,7 @@ public class Converter {
 		parseElementosTextuais();
 		parseElementosPosTextuaisApendices();
 		parseElementosPosTextuaisAnexos();
+		this.documento = null;
 	}
 	
 	private void parseDocument() {
