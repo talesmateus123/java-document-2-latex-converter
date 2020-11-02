@@ -6,46 +6,47 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.br.components.parsing.ParseDocument;
-import com.br.components.parsing.pos_textual.ParseElementosPosTextuais;
-import com.br.components.parsing.pre_textual.ParseAbstractX;
-import com.br.components.parsing.pre_textual.ParseAgradecimentos;
-import com.br.components.parsing.pre_textual.ParseCapa;
-import com.br.components.parsing.pre_textual.ParseDedicatoria;
-import com.br.components.parsing.pre_textual.ParseEpigrafe;
-import com.br.components.parsing.pre_textual.ParseFichaCatalografica;
-import com.br.components.parsing.pre_textual.ParseFolhaAprovacao;
-import com.br.components.parsing.pre_textual.ParseFolhaDeRosto;
-import com.br.components.parsing.pre_textual.ParseResumo;
-import com.br.components.parsing.textual.ParseElementosTextuais;
+import com.br.components.parsing.ParseDocumentComponent;
+import com.br.components.parsing.pos_textual.ParseElementosPosTextuaisComponent;
+import com.br.components.parsing.pre_textual.ParseAbstractXComponent;
+import com.br.components.parsing.pre_textual.ParseAgradecimentosComponent;
+import com.br.components.parsing.pre_textual.ParseCapaComponent;
+import com.br.components.parsing.pre_textual.ParseDedicatoriaComponent;
+import com.br.components.parsing.pre_textual.ParseEpigrafeComponent;
+import com.br.components.parsing.pre_textual.ParseFichaCatalograficaComponent;
+import com.br.components.parsing.pre_textual.ParseFolhaAprovacaoComponent;
+import com.br.components.parsing.pre_textual.ParseFolhaDeRostoComponent;
+import com.br.components.parsing.pre_textual.ParseResumoComponent;
+import com.br.components.parsing.textual.ParseElementosTextuaisComponent;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 
 @Component
-public class DocumentParser {
+public class DocumentParserComponent {
 	@Autowired
-	private ParseDocument parseDocument;
+	private ParseDocumentComponent parseDocument;
 	@Autowired
-	private ParseAbstractX parseAbstractX;
+	private ParseAbstractXComponent parseAbstractX;
 	@Autowired
-	private ParseAgradecimentos parseAgradecimentos;
+	private ParseAgradecimentosComponent parseAgradecimentos;
 	@Autowired
-	private ParseCapa parseCapa;
+	private ParseCapaComponent parseCapa;
 	@Autowired
-	private ParseDedicatoria parseDedicatoria;
+	private ParseDedicatoriaComponent parseDedicatoria;
 	@Autowired
-	private ParseEpigrafe parseEpigrafe;
+	private ParseEpigrafeComponent parseEpigrafe;
 	@Autowired
-	private ParseFichaCatalografica parseFichaCatalografica;
+	private ParseFichaCatalograficaComponent parseFichaCatalografica;
 	@Autowired
-	private ParseFolhaAprovacao parseFolhaAprovacao;
+	private ParseFolhaAprovacaoComponent parseFolhaAprovacao;
 	@Autowired
-	private ParseFolhaDeRosto parseFolhaDeRosto;
-	private ParseResumo parseResumo;
+	private ParseFolhaDeRostoComponent parseFolhaDeRosto;
 	@Autowired
-	private ParseElementosTextuais parseElementosTextuais;
+	private ParseResumoComponent parseResumo;
 	@Autowired
-	private ParseElementosPosTextuais parseElementosPosTextuais;
+	private ParseElementosTextuaisComponent parseElementosTextuais;
+	@Autowired
+	private ParseElementosPosTextuaisComponent parseElementosPosTextuais;
 	
 	/**
 	 * Esse método realiza o "parsing" entre o documento e um arquivo passados por parâmetro 

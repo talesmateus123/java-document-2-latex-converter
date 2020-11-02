@@ -1,8 +1,14 @@
-package com.br.tests;
+package com.br.resources;
 
 import java.io.IOException;
 import java.time.Year;
 import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.br.models.Capitulo;
 import com.br.models.Documento;
@@ -20,8 +26,19 @@ import com.br.models.pre_textual.Pessoa;
 import com.br.models.textual.ElementosTextuais;
 import com.br.services.ConverterService;
 
-public class DocumentTests {
-	public static void initTests() {
+
+@RestController
+@RequestMapping(value = "/api/converter")
+public class ConverterResource {
+	@Autowired
+	private ConverterService service;
+	
+	/**
+	 * Finds all computers.
+	 * @return ResponseEntity<List<ComputerDTO>>
+	 */
+	@GetMapping
+	public ResponseEntity<Void> findAll() {
 		Pessoa autor = new Pessoa(null, "Tales Mateus de Oliveira", "Ferreira", TipoPessoa.ORIENTANDO, null);
 		Pessoa orientador = new Pessoa(null, "Vagner", "Bezerra", TipoPessoa.ORIENTADOR, null);
 		Pessoa coorientador = new Pessoa(null, "Afonso", "Leite", TipoPessoa.COORIENTADOR, null);
@@ -65,15 +82,14 @@ public class DocumentTests {
 				instituicao, curso, orientador, coorientador, elementosPreTextuais, elementosTextuais, 
 				elementosPosTextuais);
 		
-		ConverterService converter = new ConverterService();
-		
 		try {
-			converter.toConvert(documento);
+			service.toConvert(documento);
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		return ResponseEntity.noContent().build();
 	}
+	
 	
 }

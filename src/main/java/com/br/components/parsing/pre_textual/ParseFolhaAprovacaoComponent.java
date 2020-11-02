@@ -9,7 +9,7 @@ import com.br.components.parsing.Parse;
 import com.br.models.Documento;
 
 @Component
-public class ParseFolhaAprovacao extends Parse {
+public final class ParseFolhaAprovacaoComponent extends Parse {
 
 	@Override
 	public String persistData(String string, Documento document) {

@@ -8,7 +8,7 @@ import com.br.models.enums.TipoTrabalho;
 import com.br.models.enums.TituloAcademico;
 
 @Component
-public class ParseCapa extends Parse {
+public final class ParseCapaComponent extends Parse {
 	
 	@Override
 	public String persistData(String string, Documento document) {

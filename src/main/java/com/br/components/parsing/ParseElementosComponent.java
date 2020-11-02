@@ -3,7 +3,7 @@ package com.br.components.parsing;
 import com.br.models.Capitulo;
 import com.br.util.Html2LatexUtil;
 
-public class ParseElementos extends Parse {
+public class ParseElementosComponent extends Parse {
 	
 	/**
 	 * 

@@ -6,7 +6,7 @@ import com.br.components.parsing.Parse;
 import com.br.models.Documento;
 
 @Component
-public class ParseEpigrafe extends Parse {
+public final class ParseEpigrafeComponent extends Parse {
 
 	@Override
 	public String persistData(String string, Documento document) {

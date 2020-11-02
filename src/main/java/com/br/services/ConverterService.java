@@ -12,15 +12,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.br.components.converter.DocumentParser;
+import com.br.components.converter.DocumentParserComponent;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 import com.br.util.ConverterFileUtil;
 
 @Service
-public class Converter {
+public class ConverterService {
 	@Autowired
-	private DocumentParser documentParser;
+	private DocumentParserComponent documentParser;
 	private Documento documento;
 	private String mainDirectoryPath;
 	
@@ -30,7 +30,7 @@ public class Converter {
 	}
 	
 	private void parseDocumentToTemplate() throws IOException {
-		File templateFile = new File("src/main/resources/templates/monografia");
+		File templateFile = new File("src/main/resources/latex-templates/monografia");
 
 		generateFileName();
 		
@@ -47,10 +47,12 @@ public class Converter {
 		parseElementosPosTextuaisApendices();
 		parseElementosPosTextuaisAnexos();
 		this.documento = null;
+		
+		// zip fileCopied
 	}
 	
 	private void parseDocument() {
-		File document = new File(this.mainDirectoryPath + "/tcc.tex");
+		File document = new File(this.mainDirectoryPath + "/main.tex");
 		documentParser.parseDocument(document, documento);
 	}
 	

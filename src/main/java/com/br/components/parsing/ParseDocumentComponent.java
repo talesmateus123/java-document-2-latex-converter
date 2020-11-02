@@ -9,7 +9,7 @@ import com.br.models.Capitulo;
 import com.br.models.Documento;
 
 @Component
-public class ParseDocument extends Parse {
+public final class ParseDocumentComponent extends Parse {
 
 	@Override
 	public String persistData(String string, Documento document) {

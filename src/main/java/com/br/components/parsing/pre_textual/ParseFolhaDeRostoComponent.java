@@ -7,7 +7,7 @@ import com.br.models.Documento;
 import com.br.models.enums.TipoTrabalho;
 
 @Component
-public class ParseFolhaDeRosto extends Parse {
+public final class ParseFolhaDeRostoComponent extends Parse {
 
 	@Override
 	public String persistData(String string, Documento document) {

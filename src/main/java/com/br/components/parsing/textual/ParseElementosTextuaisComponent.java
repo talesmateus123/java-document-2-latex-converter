@@ -4,12 +4,12 @@ import java.io.File;
 
 import org.springframework.stereotype.Component;
 
-import com.br.components.parsing.ParseElementos;
+import com.br.components.parsing.ParseElementosComponent;
 import com.br.models.Capitulo;
 import com.br.util.ConverterFileUtil;
 
 @Component
-public class ParseElementosTextuais extends ParseElementos {
+public final class ParseElementosTextuaisComponent extends ParseElementosComponent {
 	
 	/**
 	 * Persiste os dados do capítulo em um arquivo.
