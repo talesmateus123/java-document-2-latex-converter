@@ -9,14 +9,14 @@ import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 
-import com.br.converter.util.ConverterUtil;
+import com.br.converter.util.ConverterFileUtil;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 
 public class Converter {
 	private final DocumentParser documentParser = new DocumentParser();
 	private Documento documento;
-	String mainDirectoryPath;
+	private String mainDirectoryPath;
 	
 	public void toConvert(Documento documento) throws IOException {
 		this.documento = documento;
@@ -86,7 +86,7 @@ public class Converter {
 	private void parseElementosTextuais() {
 		for(Capitulo capitulo : this.documento.getElementosTextuais().getCapitulos()) {
 			File file = new File(this.mainDirectoryPath + "/elementos/textuais/" + capitulo.getLabel() + ".tex");
-			ConverterUtil.createFile(file);
+			ConverterFileUtil.createFile(file);
 			documentParser.parseElementosTextuais(file, capitulo);
 		}
 	}

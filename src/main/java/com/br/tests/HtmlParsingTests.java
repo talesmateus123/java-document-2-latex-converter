@@ -1,29 +1,37 @@
 package com.br.tests;
 
-import javax.swing.text.html.HTML;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
+import com.br.converter.util.Html2LatexUtil;
 
 public class HtmlParsingTests {
 	public static void initTests() {
-		Document document = Jsoup.parse(
+		String htmlText =
 				"     	<h1>Titulo</h1>"
 				+ "		<h2>Subtitulo</h2>"
 		        + "		<p>"
-		        + "			Paragrafo"
+		        + "			Paragrafo 1"
 		        + "			<a href='link'>Link</a>"
+		        + "			<img src='image.png'></img>"
+		        + "			Continuacao"
+		        + "		</p> "
+		        + "		<p>"
+		        + "			Paragrafo 2"
+		        + "			<u>Outro</u> <b>parágrafo</b> <i>italico</i>"
 		        + "		</p>"
-		);
+		        + "		<ul>"
+		        + "			<li>primeiro</li>"
+		        + "			<li>segundo <a href='link'>Link2</a> fwefwefwef <b>bold</b></li>"
+		        + "		</ul>"
+		        + "		<p>"
+		        + "			Parágrafo 4"
+		        + "			\"aspas\""
+		        + "		</p>"
+		        + "		<ol>"
+		        + "			<li>primeiro</li>"
+		        + "			<li>segundo</li>"
+		        + "		</ol>"
+		;
 		
-		System.out.println(HTML.Tag.P);
-		
-		
-		for(Element element : document.body().getAllElements()) {
-			System.out.print("-" + element.tagName());
-			System.out.println("\t" + element.children());
-		}		
+		System.out.println(Html2LatexUtil.toConvert(htmlText));
 	}
 	
 }

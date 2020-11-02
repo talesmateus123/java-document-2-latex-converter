@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.br.converter.util.ConverterUtil;
+import com.br.converter.util.ConverterFileUtil;
 import com.br.models.Documento;
 
 public abstract class Parse {
@@ -16,12 +16,12 @@ public abstract class Parse {
 	 * @return void
 	 */
 	public void parse(File file, Documento document) {
-		List<String> splitedData = ConverterUtil.splitData(ConverterUtil.readFile(file));
+		List<String> splitedData = ConverterFileUtil.splitData(ConverterFileUtil.readFile(file));
 		
 		splitedData = splitedData.stream().map(part -> persistData(part, document))
 				.collect(Collectors.toList());
 		
-		ConverterUtil.writeFile(file, splitListStringToString(splitedData));
+		ConverterFileUtil.writeFile(file, splitListStringToString(splitedData));
 	}
 
 	/**

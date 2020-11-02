@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.br.converter.parsing.ParseElementos;
-import com.br.converter.util.ConverterUtil;
+import com.br.converter.util.ConverterFileUtil;
 import com.br.models.Capitulo;
 
 public class ParseElementosPosTextuais extends ParseElementos {
@@ -17,12 +17,12 @@ public class ParseElementosPosTextuais extends ParseElementos {
 	 * @return void
 	 */
 	public void parse(File file, List<Capitulo> capitulos) {
-		List<String> splitedData = ConverterUtil.splitData(ConverterUtil.readFile(file));
+		List<String> splitedData = ConverterFileUtil.splitData(ConverterFileUtil.readFile(file));
 		
 		splitedData = splitedData.stream().map(part -> persistCapitulos(part, capitulos))
 				.collect(Collectors.toList());
 
-		ConverterUtil.writeFile(file, splitListStringToString(splitedData));
+		ConverterFileUtil.writeFile(file, splitListStringToString(splitedData));
 	}
 	
 	/**
