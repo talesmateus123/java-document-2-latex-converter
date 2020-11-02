@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.br.components.converter.DocumentParserComponent;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
+import com.br.util.FilePdfUtil;
 import com.br.util.FileUtil;
 import com.br.util.FileZipperUtil;
 
@@ -25,12 +26,33 @@ public class ConverterService {
 	private Documento documento;
 	private String mainDirectoryPath;
 	
-	public void toConvert(Documento documento) throws IOException {
+	public File toConvert(Documento documento) throws IOException {
 		this.documento = documento;
-		parseDocumentToTemplate();
+		return parseDocumentToZip();
 	}
 	
-	private void parseDocumentToTemplate() throws IOException {
+	public File toConvert(Documento documento, boolean toPdf) throws IOException {
+		this.documento = documento;
+		return toPdf ? parseDocumentToPdf() : parseDocumentToZip();
+	}
+	
+	private File parseDocumentToZip() throws IOException {
+		File fileCopied = parseDocumentToTemplate();
+
+		File zippedFile = FileZipperUtil.zipDirectory(fileCopied);
+		FileUtil.deleteDirectory(fileCopied);
+		return zippedFile;
+	}
+	
+	private File parseDocumentToPdf() throws IOException {
+		File fileCopied = parseDocumentToTemplate();
+
+		File zippedFile = FilePdfUtil.pdfDirectory(fileCopied);
+		FileUtil.deleteDirectory(fileCopied);
+		return zippedFile;
+	}
+	
+	private File parseDocumentToTemplate() throws IOException {
 		File templateFile = new File("src/main/resources/latex-templates/monografia");
 
 		generateFileName();
@@ -49,8 +71,7 @@ public class ConverterService {
 		parseElementosPosTextuaisAnexos();
 		this.documento = null;
 
-		FileZipperUtil.zipDirectory(fileCopied);
-		FileUtil.deleteDirectory(fileCopied);
+		return fileCopied;
 	}
 	
 	private void parseDocument() {
