@@ -4,11 +4,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-public class ConverterFileUtil {
+public class FileUtil {
 	
 	/**
 	 * Escreve o conteúdo de uma string em um arquivo.
@@ -46,6 +50,19 @@ public class ConverterFileUtil {
 		    e.printStackTrace();
 		}
 	    return lines;
+	}
+	
+	public static void deleteDirectory (File file) throws IOException {
+		Path path = Paths.get(file.getPath());
+		
+		  Files.walk(path)
+		    .sorted(Comparator.reverseOrder())
+		    .map(Path::toFile)
+		    .forEach(File::delete);
+	}
+	
+	public static void deleteFile (File file) throws IOException {
+		file.delete();
 	}
 	
 	/**

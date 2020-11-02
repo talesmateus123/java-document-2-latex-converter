@@ -59,9 +59,9 @@ public final class ParseCapaComponent extends Parse {
 			case"\\newcommand\\programanivel{}":
 				return document.getCurso() != null ? "\\newcommand\\programanivel{" + document.getCurso().getNivelEscolar() + "}" : "";
 			case"\\orientador{}":
-				return document.getOrientador() != null ? "\\orientador{" + document.getOrientador().getNomeCompleto() + "}" : "%\\orientador{Prof. }";
+				return document.getOrientador() != null ? "\\orientador{Prof. " + document.getOrientador().getNomeCompleto() + "}" : "%\\orientador{Prof. }";
 			case"\\coorientador{}":
-				return document.getCoorientador() != null ? "\\coorientador{" + "Prof. " + document.getCoorientador().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
+				return document.getCoorientador() != null ? "\\coorientador{Prof. " + document.getCoorientador().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
 			default:
 				return string;
 		}

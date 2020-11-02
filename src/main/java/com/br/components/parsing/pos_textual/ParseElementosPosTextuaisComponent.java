@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.br.components.parsing.ParseElementosComponent;
 import com.br.models.Capitulo;
-import com.br.util.ConverterFileUtil;
+import com.br.util.FileUtil;
 
 @Component
 public final class ParseElementosPosTextuaisComponent extends ParseElementosComponent {
@@ -20,12 +20,12 @@ public final class ParseElementosPosTextuaisComponent extends ParseElementosComp
 	 * @return void
 	 */
 	public void parse(File file, List<Capitulo> capitulos) {
-		List<String> splitedData = ConverterFileUtil.splitData(ConverterFileUtil.readFile(file));
+		List<String> splitedData = FileUtil.splitData(FileUtil.readFile(file));
 		
 		splitedData = splitedData.stream().map(part -> persistCapitulos(part, capitulos))
 				.collect(Collectors.toList());
 
-		ConverterFileUtil.writeFile(file, splitListStringToString(splitedData));
+		FileUtil.writeFile(file, splitListStringToString(splitedData));
 	}
 	
 	/**

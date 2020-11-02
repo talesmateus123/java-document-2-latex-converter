@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import com.br.components.converter.DocumentParserComponent;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
-import com.br.util.ConverterFileUtil;
-import com.br.util.ZipFileUtil;
+import com.br.util.FileUtil;
+import com.br.util.FileZipperUtil;
 
 @Service
 public class ConverterService {
@@ -49,7 +49,8 @@ public class ConverterService {
 		parseElementosPosTextuaisAnexos();
 		this.documento = null;
 
-		ZipFileUtil.zipDirectory(fileCopied, fileCopied.getPath());
+		FileZipperUtil.zipDirectory(fileCopied);
+		FileUtil.deleteDirectory(fileCopied);
 	}
 	
 	private void parseDocument() {
@@ -97,7 +98,7 @@ public class ConverterService {
 		List<Capitulo> capitulos = this.documento.getElementosTextuais().getCapitulos();
 		for(Capitulo capitulo : capitulos) {
 			File file = new File(this.mainDirectoryPath + "/elementos/textuais/" + capitulo.getLabel() + ".tex");
-			ConverterFileUtil.createFile(file);
+			FileUtil.createFile(file);
 			documentParser.parseElementosTextuais(file, capitulo);
 		}
 	}

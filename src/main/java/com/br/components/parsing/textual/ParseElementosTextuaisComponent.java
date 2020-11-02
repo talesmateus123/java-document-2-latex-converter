@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.br.components.parsing.ParseElementosComponent;
 import com.br.models.Capitulo;
-import com.br.util.ConverterFileUtil;
+import com.br.util.FileUtil;
 
 @Component
 public final class ParseElementosTextuaisComponent extends ParseElementosComponent {
@@ -19,7 +19,7 @@ public final class ParseElementosTextuaisComponent extends ParseElementosCompone
 	 */
 	public void parse(File file, Capitulo capitulo) {
 		String chapContent = persistCapitulo(capitulo);
-		ConverterFileUtil.writeFile(file, chapContent);
+		FileUtil.writeFile(file, chapContent);
 	}
 
 }

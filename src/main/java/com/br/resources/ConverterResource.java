@@ -26,7 +26,6 @@ import com.br.models.pre_textual.Pessoa;
 import com.br.models.textual.ElementosTextuais;
 import com.br.services.ConverterService;
 
-
 @RestController
 @RequestMapping(value = "/api/converter")
 public class ConverterResource {
