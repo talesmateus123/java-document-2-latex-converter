@@ -18,7 +18,7 @@ public final class ParseCapaComponent extends Parse {
 			case"\\subtitulo{}":
 				return document.getSubTitulo() != null ? "\\subtitulo{" + document.getSubTitulo() + "}" : "%\\subtitulo{}";
 			case"\\titleabstract{}":
-				return document.getElementosPreTextuais().getAbstractX() != null ? "\\titleabstract{" + document.getElementosPreTextuais().getAbstractX() + "}" : "%\\titleabstract{}";
+				return document.getTitle() != null ? "\\titleabstract{" + document.getTitle() + "}" : "%\\titleabstract{}";
 			case"\\autor{}":
 				return document.getAutor() != null ? "\\autor{" + document.getAutor().getNomeCompleto() + "}" : "%\\autor{}";
 			case"\\autorcitacao{}":

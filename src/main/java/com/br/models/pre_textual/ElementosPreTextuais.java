@@ -76,15 +76,14 @@ public class ElementosPreTextuais {
 			boolean enabledFichaCatalografica, boolean enabledListaSiglas, boolean enabledListaSimbolos,
 			boolean enabledListaTabelas, boolean enabledListaAlgoritmos, boolean enabledListaFiguras,
 			boolean enabledListaQuadros) {
-		super();
 		this.id = id;
-		this.abstractX = abstractX;
+		this.abstractX = abstractX != null ? abstractX : new Resumo();
 		this.agradecimentos = agradecimentos;
 		this.dedicatoria = dedicatoria;
 		this.epigrafe = epigrafe;
 		this.fichaCatalograficaPalavrasChave = fichaCatalograficaPalavrasChave != null ? fichaCatalograficaPalavrasChave : new ArrayList<String>();
 		this.preAmbulo = preAmbulo;
-		this.resumo = resumo;
+		this.resumo = resumo != null ? resumo : new Resumo();
 		this.listaSiglas = listaSiglas;
 		this.listaSimbolos = listaSimbolos;
 		this.enabledAgradecimentos = enabledAgradecimentos;

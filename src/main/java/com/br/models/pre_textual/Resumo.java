@@ -1,5 +1,6 @@
 package com.br.models.pre_textual;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -10,14 +11,14 @@ public class Resumo {
 	private List<String> palavrasChave;
 	
 	public Resumo() {
-		
+		this.palavrasChave = new ArrayList<String>();
 	}
 	
 	public Resumo(Long id, String texto, Locale locale, List<String> palavrasChave) {
 		this.id = id;
 		this.texto = texto;
 		this.locale = locale;
-		this.palavrasChave = palavrasChave;
+		this.palavrasChave = palavrasChave != null ? palavrasChave : new ArrayList<String>();
 	}
 
 	public Long getId() {

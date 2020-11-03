@@ -16,8 +16,8 @@ public final class ParseResumoComponent extends Parse {
 			case"\\palavraschave":
 				String palavrasChave = "";
 				if(document.getElementosPreTextuais().getResumo() != null) {
-				for (String palavraChave : document.getElementosPreTextuais().getResumo().getPalavrasChave())
-					palavrasChave += palavraChave;
+					for (String palavraChave : document.getElementosPreTextuais().getResumo().getPalavrasChave())
+						palavrasChave += palavraChave;
 				}
 				return palavrasChave;
 			default:

@@ -16,8 +16,8 @@ public final class ParseAbstractXComponent extends Parse {
 			case"\\keywords":
 				String palavrasChave = "";
 				if(document.getElementosPreTextuais().getAbstractX() != null) {
-				for (String palavraChave : document.getElementosPreTextuais().getAbstractX().getPalavrasChave())
-					palavrasChave += palavraChave;
+					for (String palavraChave : document.getElementosPreTextuais().getAbstractX().getPalavrasChave())
+						palavrasChave += palavraChave;
 				}
 				return palavrasChave;
 			default:
