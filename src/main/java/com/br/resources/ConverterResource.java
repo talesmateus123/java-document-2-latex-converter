@@ -54,7 +54,9 @@ public class ConverterResource {
 				+ "<p>Parágrafo 2 <b>texto em negrito</b></p>"
 				+ "<h2>Subseção 1</h2>"
 				+ "<p>Lista ordenada:</p>"
-				+ "<ol><li>Item 1</li> <li>Item 2</li></ol>"
+				+ "<ol><li index=\"i1\">Item 1</li> <li>Item 2</li></ol>"
+				+ "<p>Lista não ordenada:</p>"
+				+ "<ul><li index=\"i1\">Item 1</li> <li index=\"i2\">Item 2</li></ul>"
 				);
 		Capitulo capitulo2 = new Capitulo(null, "Desenvolvimento", "body");
 		Capitulo capitulo3 = new Capitulo(null, "Conclusao", "body");

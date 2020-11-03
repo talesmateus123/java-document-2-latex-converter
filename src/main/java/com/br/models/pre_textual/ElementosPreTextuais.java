@@ -3,6 +3,7 @@ package com.br.models.pre_textual;
 import com.br.models.components.Lista;
 
 public class ElementosPreTextuais {
+	// TODO Fazer últimos ajustes dessa classe e implementar a Classe DTO
 	private Long id;
 	private Resumo abstractX;
 	private String agradecimentos;
@@ -13,15 +14,6 @@ public class ElementosPreTextuais {
 	private Resumo resumo;
 	private Lista listaSiglas;
 	private Lista listaSimbolos;
-	
-
-	/*
-	% Lista de Abreviaturas e Siglas
-	!\include{elementos/pre-textuais/listas/lista-siglas}!
-
-	% Lista de Símbolos
-	!\include{elementos/pre-textuais/listas/lista-simbolos}!
-	 */
 
 	public ElementosPreTextuais() {
 		

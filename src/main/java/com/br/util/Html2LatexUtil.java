@@ -97,7 +97,9 @@ public class Html2LatexUtil {
 		
 		for (Element childElement : element.children()) {
 			if (childElement.tagName().equals("li")) {
-				body += "\n\t\\item ";
+				String index = childElement.attr("index");
+				
+				body += index.isEmpty() ? "\n\t\\item " : "\n\t\\item [" + index + "] ";
 				if (childElement.childrenSize() > 0) {
 					for (Node n : childElement.childNodes()) {
 				        if (n instanceof TextNode) {
