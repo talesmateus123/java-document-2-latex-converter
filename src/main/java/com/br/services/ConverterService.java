@@ -6,10 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 
 import com.br.components.converter.DocumentParserComponent;
@@ -26,30 +29,42 @@ public class ConverterService {
 	private Documento documento;
 	private String mainDirectoryPath;
 	
-	public File toConvert(Documento documento) throws IOException {
+	public Resource toConvert(Documento documento) throws IOException {
 		this.documento = documento;
-		return parseDocumentToZip();
+
+		File file = parseDocumentToZip();
+		Resource resource = null;
+		try {
+			resource = new UrlResource(file.toURI());
+		} 
+		catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return resource;
 	}
 	
-	public File toConvert(Documento documento, boolean toPdf) throws IOException {
+	public Resource toConvert(Documento documento, boolean toPdf) throws IOException {
 		this.documento = documento;
-		return toPdf ? parseDocumentToPdf() : parseDocumentToZip();
+		File file = toPdf ? parseDocumentToPdf() : parseDocumentToZip();
+		
+		Resource resource = null;
+		try {
+			resource = new UrlResource(file.toURI());
+		} 
+		catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return resource;
 	}
 	
 	private File parseDocumentToZip() throws IOException {
 		File fileCopied = parseDocumentToTemplate();
-
-		File zippedFile = FileZipperUtil.zipDirectory(fileCopied);
-		FileUtil.deleteDirectory(fileCopied);
-		return zippedFile;
+		return FileZipperUtil.zipDirectory(fileCopied);
 	}
 	
 	private File parseDocumentToPdf() throws IOException {
 		File fileCopied = parseDocumentToTemplate();
-
-		File zippedFile = FilePdfUtil.pdfDirectory(fileCopied);
-		FileUtil.deleteDirectory(fileCopied);
-		return zippedFile;
+		return FilePdfUtil.pdfDirectory(fileCopied);
 	}
 	
 	private File parseDocumentToTemplate() throws IOException {

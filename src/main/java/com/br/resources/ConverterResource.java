@@ -5,6 +5,9 @@ import java.time.Year;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +35,7 @@ public class ConverterResource {
 	@Autowired
 	private ConverterService service;
 	
-	/**
-	 * Finds all computers.
-	 * @return ResponseEntity<List<ComputerDTO>>
-	 */
-	@GetMapping
-	public ResponseEntity<Void> findAll() {
+	private Documento getDocumento() {
 		Pessoa autor = new Pessoa(null, "Tales Mateus de Oliveira", "Ferreira", TipoPessoa.ORIENTANDO, null);
 		Pessoa orientador = new Pessoa(null, "Vagner", "Bezerra", TipoPessoa.ORIENTADOR, null);
 		Pessoa coorientador = new Pessoa(null, "Afonso", "Leite", TipoPessoa.COORIENTADOR, null);
@@ -80,15 +78,29 @@ public class ConverterResource {
 				Year.now(), null, TipoTrabalho.TCC, TituloAcademico.TECNOLOGO, null, null, 
 				instituicao, curso, orientador, coorientador, elementosPreTextuais, elementosTextuais, 
 				elementosPosTextuais);
-		
-		try {
-			service.toConvert(documento);
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.noContent().build();
+		return documento;
 	}
 	
+	@GetMapping("/zip")
+	public ResponseEntity<Resource> downloadZippedFile() throws IOException {
+		Documento documento = getDocumento();
+		Resource resource = service.toConvert(documento);
+		
+		return ResponseEntity.ok()
+	            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+				.body(resource);
+	}
+	
+	@GetMapping("/pdf")
+	public ResponseEntity<Resource> downloadPdfFile() throws IOException {
+		Documento documento = getDocumento();
+		Resource resource = service.toConvert(documento, true);
+		
+		return ResponseEntity.ok()
+	            .contentType(MediaType.APPLICATION_PDF)
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+				.body(resource);
+	}
 	
 }
