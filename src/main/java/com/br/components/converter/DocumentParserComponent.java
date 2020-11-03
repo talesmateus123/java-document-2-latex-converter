@@ -1,6 +1,7 @@
 package com.br.components.converter;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +55,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseDocument(File file, Documento document) {
+	public void parseDocument(File file, Documento document) throws IOException {
 		this.parseDocument.parse(file, document);
 	}
 	
@@ -65,8 +67,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseAbstractX(File file, Documento document) {
+	public void parseAbstractX(File file, Documento document) throws IOException {
 		this.parseAbstractX.parse(file, document);
 	}
 	
@@ -76,8 +79,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseAgradecimentos(File file, Documento document) {
+	public void parseAgradecimentos(File file, Documento document) throws IOException {
 		this.parseAgradecimentos.parse(file, document);
 	}
 	
@@ -87,8 +91,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseCapa(File file, Documento document) {
+	public void parseCapa(File file, Documento document) throws IOException {
 		this.parseCapa.parse(file, document);
 	}
 	
@@ -98,8 +103,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseDedicatoria(File file, Documento document) {
+	public void parseDedicatoria(File file, Documento document) throws IOException {
 		this.parseDedicatoria.parse(file, document);
 	}
 	
@@ -109,8 +115,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseEpigrafe(File file, Documento document) {
+	public void parseEpigrafe(File file, Documento document) throws IOException {
 		this.parseEpigrafe.parse(file, document);
 	}
 	
@@ -120,8 +127,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseFolhaAprovacao(File file, Documento document) {
+	public void parseFolhaAprovacao(File file, Documento document) throws IOException {
 		this.parseFolhaAprovacao.parse(file, document);
 	}
 	
@@ -131,8 +139,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseFichaCatalografica(File file, Documento document) {
+	public void parseFichaCatalografica(File file, Documento document) throws IOException {
 		this.parseFichaCatalografica.parse(file, document);
 	}
 	
@@ -142,8 +151,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseFolhaDeRosto(File file, Documento document) {
+	public void parseFolhaDeRosto(File file, Documento document) throws IOException {
 		this.parseFolhaDeRosto.parse(file, document);
 	}
 	
@@ -153,8 +163,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseResumo(File file, Documento document) {
+	public void parseResumo(File file, Documento document) throws IOException {
 		this.parseResumo.parse(file, document);
 	}
 	
@@ -164,8 +175,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseElementosTextuais(File file, Capitulo capitulo) {
+	public void parseElementosTextuais(File file, Capitulo capitulo) throws IOException {
 		this.parseElementosTextuais.parse(file, capitulo);
 	}
 	
@@ -175,8 +187,9 @@ public class DocumentParserComponent {
 	 * @param file
 	 * @param documento
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parseElementosPosTextuais(File file, List<Capitulo> capitulos) {
+	public void parseElementosPosTextuais(File file, List<Capitulo> capitulos) throws IOException {
 		this.parseElementosPosTextuais.parse(file, capitulos);
 	}
 	

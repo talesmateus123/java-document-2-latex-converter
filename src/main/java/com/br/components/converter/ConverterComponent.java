@@ -28,31 +28,20 @@ public class ConverterComponent {
 	private Documento documento;
 	private String mainDirectoryPath;
 	
-	public Resource convert(Documento documento) throws IOException {
+	public Resource convert(Documento documento) throws IOException, MalformedURLException {
 		this.documento = documento;
 
 		File file = parseDocumentToZip();
 		Resource resource = null;
-		try {
-			resource = new UrlResource(file.toURI());
-		} 
-		catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
+		resource = new UrlResource(file.toURI());
 		return resource;
 	}
 	
-	public Resource convert(Documento documento, boolean toPdf) throws IOException {
+	public Resource convert(Documento documento, boolean toPdf) throws IOException, MalformedURLException, InterruptedException {
 		this.documento = documento;
 		File file = toPdf ? parseDocumentToPdf() : parseDocumentToZip();
 		
-		Resource resource = null;
-		try {
-			resource = new UrlResource(file.toURI());
-		} 
-		catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
+		Resource resource = file != null ? new UrlResource(file.toURI()) : null;
 		return resource;
 	}
 	
@@ -61,7 +50,7 @@ public class ConverterComponent {
 		return FileZipperUtil.zipDirectory(fileCopied);
 	}
 	
-	private File parseDocumentToPdf() throws IOException {
+	private File parseDocumentToPdf() throws IOException, InterruptedException {
 		File fileCopied = parseDocumentToTemplate();
 		return FilePdfUtil.pdfDirectory(fileCopied);
 	}
@@ -88,12 +77,12 @@ public class ConverterComponent {
 		return fileCopied;
 	}
 	
-	private void parseDocument() {
+	private void parseDocument() throws IOException {
 		File document = new File(this.mainDirectoryPath + "/main.tex");
 		documentParser.parseDocument(document, documento);
 	}
 	
-	private void parseElementosPreTextuais() {
+	private void parseElementosPreTextuais() throws IOException {
 		File directory = new File(this.mainDirectoryPath + "/elementos/pre-textuais");
 		File[] elementos = directory.listFiles();
 		
@@ -129,7 +118,7 @@ public class ConverterComponent {
 		}
 	}
 	
-	private void parseElementosTextuais() {
+	private void parseElementosTextuais() throws IOException {
 		List<Capitulo> capitulos = this.documento.getElementosTextuais().getCapitulos();
 		for(Capitulo capitulo : capitulos) {
 			File file = new File(this.mainDirectoryPath + "/elementos/textuais/" + capitulo.getLabel() + ".tex");
@@ -138,7 +127,7 @@ public class ConverterComponent {
 		}
 	}
 
-	private void parseElementosPosTextuaisApendices() {
+	private void parseElementosPosTextuaisApendices() throws IOException {
 		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getApendices();
 		if(!capitulos.isEmpty()) {
 			File file = new File(this.mainDirectoryPath + "/elementos/pos-textuais/apendices.tex");
@@ -146,7 +135,7 @@ public class ConverterComponent {
 		}
 	}
 
-	private void parseElementosPosTextuaisAnexos() {
+	private void parseElementosPosTextuaisAnexos() throws IOException {
 		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getAnexos();
 		if(!capitulos.isEmpty()) {
 			File file = new File(this.mainDirectoryPath + "/elementos/pos-textuais/anexos.tex");

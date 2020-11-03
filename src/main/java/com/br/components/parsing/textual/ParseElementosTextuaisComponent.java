@@ -1,6 +1,7 @@
 package com.br.components.parsing.textual;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.springframework.stereotype.Component;
 
@@ -16,8 +17,9 @@ public final class ParseElementosTextuaisComponent extends ParseElementosCompone
 	 * @param file
 	 * @param document
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parse(File file, Capitulo capitulo) {
+	public void parse(File file, Capitulo capitulo) throws IOException {
 		String chapContent = persistCapitulo(capitulo);
 		FileUtil.writeFile(file, chapContent);
 	}

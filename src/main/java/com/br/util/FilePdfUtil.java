@@ -1,9 +1,7 @@
 package com.br.util;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,42 +15,29 @@ public class FilePdfUtil {
      * @param dir
      * @throws IOException 
      */
-    public static File pdfDirectory(File dir) throws IOException {
+    public static File pdfDirectory(File dir) throws IOException, InterruptedException{
         return runCommand(dir);
     }
     
-    private static File runCommand(File dir) {
-    	File pdfFile = null;
+    private static File runCommand(File dir)  throws IOException, InterruptedException {
     	ProcessBuilder processBuilder = new ProcessBuilder();
-    	
+    	// TODO Handle exceptions from command
     	processBuilder.command("bash", "-c", "cd " + dir.getPath() + " && pdflatex main.tex && bibtex main.aux && pdflatex main.tex && pdflatex main.tex");
         
-        try {
-            Process process = processBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-            	logger.info(line);
-            }
-            int exitVal = process.waitFor();
-            
-            if (exitVal == 0) {
-            	logger.info("PDF file generated successfuly");
-                pdfFile = new File(dir.getPath()+ "/main.pdf");
-            } 
-            else {
-    	        logger.error("Error during generate PDF file");
-            }
-
+        Process process = processBuilder.start();
+        
+        logger.info("Compiling LaTeX template to PDF file...");
+        int exitVal = process.waitFor();
+        
+        if (exitVal == 0) {
+        	logger.info("PDF file generated successfuly");
+            return new File(dir.getPath()+ "/main.pdf");
         } 
-        catch (IOException e) {
-            e.printStackTrace();
-        } 
-        catch (InterruptedException e) {
-            e.printStackTrace();
+        else {
+	        logger.error("Error during generate PDF file");
+	        throw new InterruptedException("Error during generate PDF file");
         }
-        return pdfFile;
+
     }
 	
 }

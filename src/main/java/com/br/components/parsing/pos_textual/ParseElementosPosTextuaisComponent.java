@@ -1,6 +1,7 @@
 package com.br.components.parsing.pos_textual;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,9 @@ public final class ParseElementosPosTextuaisComponent extends ParseElementosComp
 	 * @param file
 	 * @param document
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parse(File file, List<Capitulo> capitulos) {
+	public void parse(File file, List<Capitulo> capitulos) throws IOException {
 		List<String> splitedData = FileUtil.splitData(FileUtil.readFile(file));
 		
 		splitedData = splitedData.stream().map(part -> persistCapitulos(part, capitulos))

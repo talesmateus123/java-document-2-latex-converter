@@ -6,7 +6,12 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.br.models.enums.NivelEscolar;
+import com.br.models.enums.TipoTrabalho;
+import com.br.models.enums.TituloAcademico;
+
 public class DocumentoNewDTO {
+	
 	// Atributos do documento
 	private String titulo;
 	private String subTitulo;
@@ -152,20 +157,20 @@ public class DocumentoNewDTO {
 		this.dataAprovacao = dataAprovacao;
 	}
 
-	public Integer getTipoTrabalho() {
-		return tipoTrabalho;
+	public TipoTrabalho getTipoTrabalho() {
+		return TipoTrabalho.toEnum(tipoTrabalho);
 	}
 
-	public void setTipoTrabalho(Integer tipoTrabalho) {
-		this.tipoTrabalho = tipoTrabalho;
+	public void setTipoTrabalho(TipoTrabalho tipoTrabalho) {
+		this.tipoTrabalho = tipoTrabalho.getCod();
 	}
 
-	public Integer getTituloAcademico() {
-		return tituloAcademico;
+	public TituloAcademico getTituloAcademico() {
+		return TituloAcademico.toEnum(tituloAcademico);
 	}
 
-	public void setTituloAcademico(Integer tituloAcademico) {
-		this.tituloAcademico = tituloAcademico;
+	public void setTituloAcademico(TituloAcademico tituloAcademico) {
+		this.tituloAcademico = tituloAcademico.getCod();
 	}
 
 	public String getAreaConcentracao() {
@@ -224,12 +229,12 @@ public class DocumentoNewDTO {
 		this.nomeCurso = nomeCurso;
 	}
 
-	public Integer getNivelEscolarCurso() {
-		return nivelEscolarCurso;
+	public NivelEscolar getNivelEscolarCurso() {
+		return NivelEscolar.toEnum(nivelEscolarCurso);
 	}
 
-	public void setNivelEscolarCurso(Integer nivelEscolarCurso) {
-		this.nivelEscolarCurso = nivelEscolarCurso;
+	public void setNivelEscolarCurso(NivelEscolar nivelEscolarCurso) {
+		this.nivelEscolarCurso = nivelEscolarCurso.getCod();
 	}
 
 	public String getNomeOrientador() {

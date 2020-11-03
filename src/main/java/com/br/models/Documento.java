@@ -28,19 +28,22 @@ public class Documento {
 	private Instituicao instituicao;
 	private Curso curso;
 	private Pessoa orientador;
-	private Pessoa coorientador;
+	private Pessoa coorientador1;
+	private Pessoa coorientador2;
 	
 	private ElementosPreTextuais elementosPreTextuais;
 	private ElementosTextuais elementosTextuais;
 	private ElementosPosTextuais elementosPosTextuais;
 	
 	public Documento() {
-	
+		this.elementosPreTextuais = new ElementosPreTextuais();
+		this.elementosTextuais = new ElementosTextuais();
+		this.elementosPosTextuais = new ElementosPosTextuais();
 	}
 	
 	public Documento(Long id, String titulo, String subTitulo, String title, Pessoa autor, String nomeCidade,
 			Year ano, LocalDate dataAprovacao, TipoTrabalho tipoTrabalho, TituloAcademico tituloAcademico, String areaConcentracao, 
-			String linhaPesquisa, Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador,
+			String linhaPesquisa, Instituicao instituicao, Curso curso, Pessoa orientador, Pessoa coorientador1, Pessoa coorientador2,
 			ElementosPreTextuais elementosPreTextuais, ElementosTextuais elementosTextuais, ElementosPosTextuais elementosPosTextuais) {
 		this.id = id;
 		this.titulo = titulo;
@@ -57,10 +60,11 @@ public class Documento {
 		this.instituicao = instituicao;
 		this.curso = curso;
 		this.orientador = orientador;
-		this.coorientador = coorientador;
-		this.elementosPreTextuais = elementosPreTextuais;
-		this.elementosTextuais = elementosTextuais;
-		this.elementosPosTextuais = elementosPosTextuais;
+		this.coorientador1 = coorientador1;
+		this.coorientador2 = coorientador2;
+		this.elementosPreTextuais = elementosPreTextuais != null ? elementosPreTextuais : new ElementosPreTextuais();
+		this.elementosTextuais = elementosTextuais != null ? elementosTextuais : new ElementosTextuais();
+		this.elementosPosTextuais = elementosPosTextuais != null ? elementosPosTextuais : new ElementosPosTextuais();
 	}
 
 	public Long getId() {
@@ -183,12 +187,20 @@ public class Documento {
 		this.orientador = orientador;
 	}
 
-	public Pessoa getCoorientador() {
-		return coorientador;
+	public Pessoa getCoorientador1() {
+		return coorientador1;
 	}
 
-	public void setCoorientador(Pessoa coorientador) {
-		this.coorientador = coorientador;
+	public void setCoorientador1(Pessoa coorientador1) {
+		this.coorientador1 = coorientador1;
+	}
+
+	public Pessoa getCoorientador2() {
+		return coorientador2;
+	}
+
+	public void setCoorientador2(Pessoa coorientador2) {
+		this.coorientador2 = coorientador2;
 	}
 
 	public ElementosPreTextuais getElementosPreTextuais() {
@@ -221,9 +233,9 @@ public class Documento {
 				+ ", autor=" + autor + ", nomeCidade=" + nomeCidade + ", ano=" + ano + ", dataAprovacao="
 				+ dataAprovacao + ", tipoTrabalho=" + tipoTrabalho + ", tituloAcademico=" + tituloAcademico
 				+ ", areaConcentracao=" + areaConcentracao + ", linhaPesquisa=" + linhaPesquisa + ", instituicao="
-				+ instituicao + ", curso=" + curso + ", orientador=" + orientador + ", coorientador=" + coorientador
-				+ ", elementosPreTextuais=" + elementosPreTextuais + ", elementosTextuais=" + elementosTextuais 
-				+ ", elementosPosTextuais=" + elementosPosTextuais + "]";
+				+ instituicao + ", curso=" + curso + ", orientador=" + orientador + ", coorientador1=" + coorientador1
+				+ ", coorientador2=" + coorientador2 + ", elementosPreTextuais=" + elementosPreTextuais 
+				+ ", elementosTextuais=" + elementosTextuais + ", elementosPosTextuais=" + elementosPosTextuais + "]";
 	}
 
 	@Override

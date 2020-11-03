@@ -1,6 +1,7 @@
 package com.br.components.parsing;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,8 +15,9 @@ public abstract class Parse {
 	 * @param file
 	 * @param document
 	 * @return void
+	 * @throws IOException 
 	 */
-	public void parse(File file, Documento document) {
+	public void parse(File file, Documento document) throws IOException {
 		List<String> splitedData = FileUtil.splitData(FileUtil.readFile(file));
 		
 		splitedData = splitedData.stream().map(part -> persistData(part, document))

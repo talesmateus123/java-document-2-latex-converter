@@ -1,6 +1,5 @@
 package com.br.tests;
 
-import java.io.IOException;
 import java.time.Year;
 import java.util.Arrays;
 
@@ -59,17 +58,12 @@ public class DocumentTests {
 		Documento documento = new Documento(null, "O desenvolvimento de software na era contemporânea", null, 
 				"The software development in the contemporary era", autor, "Corumbá", 
 				Year.now(), null, TipoTrabalho.TCC, TituloAcademico.TECNOLOGO, null, null, 
-				instituicao, curso, orientador, coorientador, elementosPreTextuais, elementosTextuais, 
+				instituicao, curso, orientador, coorientador, null, elementosPreTextuais, elementosTextuais, 
 				elementosPosTextuais);
 		
 		ConverterService converter = new ConverterService();
 		
-		try {
-			converter.convertToZipFile(documento);
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		converter.convertToZipFile(documento);
 		
 	}
 	

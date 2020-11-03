@@ -1,7 +1,6 @@
 package com.br.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,16 +18,12 @@ public class FileUtil {
 	 * @param file
 	 * @param string
 	 * @return void
+	 * @throws IOException 
 	 */
-	public static void writeFile(File file, String string) {
-		try {
-		      FileWriter fileWriter = new FileWriter(file.getPath());
-		      fileWriter.write(string);
-		      fileWriter.close();
-		}
-		catch (IOException e) {
-		      e.printStackTrace();
-		}
+	public static void writeFile(File file, String string) throws IOException {
+	      FileWriter fileWriter = new FileWriter(file.getPath());
+	      fileWriter.write(string);
+	      fileWriter.close();
 	}
 	
 	/**
@@ -36,19 +31,14 @@ public class FileUtil {
 	 * @param file
 	 * @return string
 	 */
-	public static String readFile(File file) {
+	public static String readFile(File file) throws IOException {
 		String lines = "";
-		try {
-		     Scanner scanner = new Scanner(file);
-		     while (scanner.hasNextLine()) {
-		    	 String line = scanner.nextLine();
-		    	 lines += line + "\n";
-		     }
-		     scanner.close();
-		} 
-		catch (FileNotFoundException e) {
-		    e.printStackTrace();
-		}
+	     Scanner scanner = new Scanner(file);
+	     while (scanner.hasNextLine()) {
+	    	 String line = scanner.nextLine();
+	    	 lines += line + "\n";
+	     }
+	     scanner.close();
 	    return lines;
 	}
 	
@@ -74,13 +64,8 @@ public class FileUtil {
 		return Arrays.asList(string.split("!"));
 	}
 	
-	public static void createFile(File file) {
-		try {
-			file.createNewFile();
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+	public static void createFile(File file) throws IOException {
+		file.createNewFile();
 	}
 	
 }

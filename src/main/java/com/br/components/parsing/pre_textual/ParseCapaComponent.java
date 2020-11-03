@@ -61,7 +61,7 @@ public final class ParseCapaComponent extends Parse {
 			case"\\orientador{}":
 				return document.getOrientador() != null ? "\\orientador{Prof. " + document.getOrientador().getNomeCompleto() + "}" : "%\\orientador{Prof. }";
 			case"\\coorientador{}":
-				return document.getCoorientador() != null ? "\\coorientador{Prof. " + document.getCoorientador().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
+				return document.getCoorientador1() != null ? "\\coorientador{Prof. " + document.getCoorientador1().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
 			default:
 				return string;
 		}

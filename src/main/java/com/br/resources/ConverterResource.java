@@ -1,10 +1,11 @@
 package com.br.resources;
 
-import java.io.IOException;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -12,9 +13,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.dto.DocumentoNewDTO;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 import com.br.models.enums.NivelEscolar;
@@ -82,13 +87,36 @@ public class ConverterResource {
 		Documento documento = new Documento(null, "O desenvolvimento de software na era contemporânea", null, 
 				"The software development in the contemporary era", autor, "Corumbá", 
 				Year.now(), null, TipoTrabalho.TCC, TituloAcademico.TECNOLOGO, null, null, 
-				instituicao, curso, orientador, coorientador, elementosPreTextuais, elementosTextuais, 
+				instituicao, curso, orientador, coorientador, null, elementosPreTextuais, elementosTextuais, 
 				elementosPosTextuais);
 		return documento;
 	}
 	
+	@PostMapping
+	public ResponseEntity<Resource> convertDocumentoToFile(
+			@RequestParam(value = "convertToPdf", defaultValue = "false") boolean convertToPdf,
+			@Valid @RequestBody DocumentoNewDTO objectDTO) {
+		Documento object = this.service.fromDTO(objectDTO);
+		Resource resource;
+		MediaType mediaType;
+		
+		if(convertToPdf) {
+			resource = this.service.convertToPdfFile(object);
+			mediaType = MediaType.APPLICATION_PDF;
+		}
+		else {
+			resource = this.service.convertToZipFile(object);
+			mediaType = MediaType.APPLICATION_OCTET_STREAM;
+		}
+		
+		return ResponseEntity.ok()
+	            .contentType(mediaType)
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+				.body(resource);
+	}
+	
 	@GetMapping("/zip")
-	public ResponseEntity<Resource> downloadZippedFile() throws IOException {
+	public ResponseEntity<Resource> downloadZippedFile() {
 		Documento documento = getDocumento();
 		Resource resource = service.convertToZipFile(documento);
 		
@@ -99,7 +127,7 @@ public class ConverterResource {
 	}
 	
 	@GetMapping("/pdf")
-	public ResponseEntity<Resource> downloadPdfFile() throws IOException {
+	public ResponseEntity<Resource> downloadPdfFile() {
 		Documento documento = getDocumento();
 		Resource resource = service.convertToPdfFile(documento);
 		
