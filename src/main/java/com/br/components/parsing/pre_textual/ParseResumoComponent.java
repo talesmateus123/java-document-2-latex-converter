@@ -12,7 +12,7 @@ public final class ParseResumoComponent extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\resumo":
-				return document.getElementosPreTextuais().getResumo() != null ? document.getElementosPreTextuais().getResumo().getTexto() : "";
+				return document.getElementosPreTextuais().getResumo().getTexto() != null ? document.getElementosPreTextuais().getResumo().getTexto() : "";
 			case"\\palavraschave":
 				String palavrasChave = "";
 				if(document.getElementosPreTextuais().getResumo() != null) {

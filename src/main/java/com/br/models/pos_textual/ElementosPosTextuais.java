@@ -1,19 +1,24 @@
 package com.br.models.pos_textual;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.br.models.Capitulo;
+
 public class ElementosPosTextuais {
 	private Long id;
-	private Apendices apendices;
-	private Anexos anexos;
+	private List<Capitulo> apendices;
+	private List<Capitulo> anexos;
 
 	public ElementosPosTextuais() {
-		this.apendices = new Apendices();
-		this.anexos = new Anexos();
+		this.apendices = new ArrayList<Capitulo>();
+		this.anexos = new ArrayList<Capitulo>();
 	}
 
-	public ElementosPosTextuais(Long id, Apendices apendices, Anexos anexos) {
+	public ElementosPosTextuais(Long id, List<Capitulo> apendices, List<Capitulo> anexos) {
 		this.id = id;
-		this.apendices = apendices != null ? apendices : new Apendices();
-		this.anexos = anexos != null ? anexos : new Anexos();
+		this.apendices = apendices != null ? apendices : new ArrayList<Capitulo>();
+		this.anexos = anexos != null ? anexos : new ArrayList<Capitulo>();
 	}
 
 	public Long getId() {
@@ -24,19 +29,19 @@ public class ElementosPosTextuais {
 		this.id = id;
 	}
 
-	public Apendices getApendices() {
+	public List<Capitulo> getApendices() {
 		return apendices;
 	}
 
-	public void setApendices(Apendices apendices) {
+	public void setApendices(List<Capitulo> apendices) {
 		this.apendices = apendices;
 	}
 
-	public Anexos getAnexos() {
+	public List<Capitulo> getAnexos() {
 		return anexos;
 	}
 
-	public void setAnexos(Anexos anexos) {
+	public void setAnexos(List<Capitulo> anexos) {
 		this.anexos = anexos;
 	}
 

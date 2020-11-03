@@ -12,7 +12,7 @@ public final class ParseAbstractXComponent extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\abstractX":
-				return document.getElementosPreTextuais().getAbstractX() != null ? document.getElementosPreTextuais().getAbstractX().getTexto() : "";
+				return document.getElementosPreTextuais().getAbstractX().getTexto() != null ? document.getElementosPreTextuais().getAbstractX().getTexto() : "";
 			case"\\keywords":
 				String palavrasChave = "";
 				if(document.getElementosPreTextuais().getAbstractX() != null) {

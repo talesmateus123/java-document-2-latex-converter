@@ -140,7 +140,7 @@ public class ConverterService {
 	}
 
 	private void parseElementosPosTextuaisApendices() {
-		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getApendices().getCapitulos();
+		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getApendices();
 		if(!capitulos.isEmpty()) {
 			File file = new File(this.mainDirectoryPath + "/elementos/pos-textuais/apendices.tex");
 			documentParser.parseElementosPosTextuais(file, capitulos);
@@ -148,7 +148,7 @@ public class ConverterService {
 	}
 
 	private void parseElementosPosTextuaisAnexos() {
-		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getAnexos().getCapitulos();
+		List<Capitulo> capitulos = this.documento.getElementosPosTextuais().getAnexos();
 		if(!capitulos.isEmpty()) {
 			File file = new File(this.mainDirectoryPath + "/elementos/pos-textuais/anexos.tex");
 			documentParser.parseElementosPosTextuais(file, capitulos);

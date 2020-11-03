@@ -10,8 +10,6 @@ import com.br.models.enums.NivelEscolar;
 import com.br.models.enums.TipoPessoa;
 import com.br.models.enums.TipoTrabalho;
 import com.br.models.enums.TituloAcademico;
-import com.br.models.pos_textual.Anexos;
-import com.br.models.pos_textual.Apendices;
 import com.br.models.pos_textual.ElementosPosTextuais;
 import com.br.models.pre_textual.Curso;
 import com.br.models.pre_textual.ElementosPreTextuais;
@@ -49,15 +47,14 @@ public class DocumentTests {
 		
 		Capitulo apendice1 = new Capitulo(null, "Apendice 1", "body");
 		Capitulo apendice2 = new Capitulo(null, "Apendice 2", "body");
-
-		Apendices apendices = new Apendices(null, Arrays.asList(apendice1, apendice2));
 				
 		Capitulo anexo1 = new Capitulo(null, "Anexo 1", "body");
 		Capitulo anexo2 = new Capitulo(null, "Anexo 2", "body");
 		
-		Anexos anexos = new Anexos(null, Arrays.asList(anexo1, anexo2));
-		
-		ElementosPosTextuais elementosPosTextuais = new ElementosPosTextuais(null, apendices, anexos);
+		ElementosPosTextuais elementosPosTextuais = new ElementosPosTextuais(null, 
+				Arrays.asList(apendice1, apendice2), 
+				Arrays.asList(anexo1, anexo2))
+		;
 		
 		Documento documento = new Documento(null, "O desenvolvimento de software na era contemporânea", null, 
 				"The software development in the contemporary era", autor, "Corumbá", 
