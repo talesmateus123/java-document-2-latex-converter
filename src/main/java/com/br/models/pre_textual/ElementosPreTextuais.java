@@ -17,57 +17,66 @@ public class ElementosPreTextuais {
 	// Lista em HTML com índices
 	private String listaSimbolos;
 	
-	/*
-	% Ficha Catalográfica
-	!\include{elementos/pre-textuais/ficha-catalografica}!
-
-	% Folha de Aprovação
-	!\include{elementos/pre-textuais/folha-aprovacao}!
-
-	% Dedicatória
-	!\include{elementos/pre-textuais/dedicatoria}!
-
-	% Agradecimentos
-	!\include{elementos/pre-textuais/agradecimentos}!
-
-	% Epígrafe
-	!\include{elementos/pre-textuais/epigrafe}!
-
-	%obrigatorio
-	% Resumo em Português
-	\include{elementos/pre-textuais/resumo}
-	%obrigatorio
-	% Resumo em Inglês
-	\include{elementos/pre-textuais/abstract}
-
-	% Lista de Figuras
-	!\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-figuras}!
-
-	% Lista de Quadros
-	!\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-quadros}!
-
-	% Lista de Tabelas
-	!\include{elementos/pre-textuais/listas/lista-tabelas}!
-
-	% Lista de Abreviaturas e Siglas
-	!\include{elementos/pre-textuais/listas/lista-siglas}!
-
-	% Lista de Símbolos
-	!\include{elementos/pre-textuais/listas/lista-simbolos}!
-
-	% Lista de Algoritmos
-	!\include{elementos/pre-textuais/listas/listas-diversas/lista-algoritmos}!
-
-	% Sumário
-	\include{elementos/pre-textuais/sumario}
-	 */
+	private boolean enabledAgradecimentos;
+	private boolean enabledDedicatoria;
+	private boolean enabledEpigrafe;
+	private boolean enabledFichaCatalografica;
+	private boolean enabledListaSiglas;
+	private boolean enabledListaSimbolos;
+	private boolean enabledListaTabelas;
+	private boolean enabledListaAlgoritmos;
+	private boolean enabledListaFiguras;
+	private boolean enabledListaQuadros;
 
 	public ElementosPreTextuais() {
+		this.abstractX = new Resumo();
 		this.fichaCatalograficaPalavrasChave = new ArrayList<String>();
+		this.resumo = new Resumo();
+		this.enabledAgradecimentos = true;
+		this.enabledDedicatoria = true;
+		this.enabledEpigrafe = true;
+		this.enabledFichaCatalografica = true;
+		this.enabledListaSiglas = true;
+		this.enabledListaSimbolos = true;
+		this.enabledListaTabelas = true;
+		this.enabledListaAlgoritmos = true;
+		this.enabledListaFiguras = true;
+		this.enabledListaQuadros = true;
 	}
 
 	public ElementosPreTextuais(Long id, Resumo abstractX, String agradecimentos, String dedicatoria, String epigrafe,
 			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, String listaSiglas, String listaSimbolos) {
+		this.id = id;
+		this.abstractX = abstractX != null ? abstractX : new Resumo();
+		this.agradecimentos = agradecimentos;
+		this.dedicatoria = dedicatoria;
+		this.epigrafe = epigrafe;
+		this.fichaCatalograficaPalavrasChave = fichaCatalograficaPalavrasChave != null ? fichaCatalograficaPalavrasChave : new ArrayList<String>();
+		this.preAmbulo = preAmbulo;
+		this.resumo = resumo != null ? resumo : new Resumo();
+		this.listaSiglas = listaSiglas;
+		this.listaSimbolos = listaSimbolos;
+		this.enabledAgradecimentos = true;
+		this.enabledDedicatoria = true;
+		this.enabledEpigrafe = true;
+		this.enabledFichaCatalografica = true;
+		this.enabledListaSiglas = true;
+		this.enabledListaSimbolos = true;
+		this.enabledListaTabelas = true;
+		this.enabledListaAlgoritmos = true;
+		this.enabledListaFiguras = true;
+		this.enabledListaQuadros = true;
+	}
+	
+	
+
+	public ElementosPreTextuais(Long id, Resumo abstractX, String agradecimentos, String dedicatoria, String epigrafe,
+			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, String listaSiglas,
+			String listaSimbolos, boolean enabledAgradecimentos, boolean enabledDedicatoria, boolean enabledEpigrafe,
+			boolean enabledFichaCatalografica, boolean enabledListaSiglas, boolean enabledListaSimbolos,
+			boolean enabledListaTabelas, boolean enabledListaAlgoritmos, boolean enabledListaFiguras,
+			boolean enabledListaQuadros) {
+		super();
 		this.id = id;
 		this.abstractX = abstractX;
 		this.agradecimentos = agradecimentos;
@@ -78,6 +87,16 @@ public class ElementosPreTextuais {
 		this.resumo = resumo;
 		this.listaSiglas = listaSiglas;
 		this.listaSimbolos = listaSimbolos;
+		this.enabledAgradecimentos = enabledAgradecimentos;
+		this.enabledDedicatoria = enabledDedicatoria;
+		this.enabledEpigrafe = enabledEpigrafe;
+		this.enabledFichaCatalografica = enabledFichaCatalografica;
+		this.enabledListaSiglas = enabledListaSiglas;
+		this.enabledListaSimbolos = enabledListaSimbolos;
+		this.enabledListaTabelas = enabledListaTabelas;
+		this.enabledListaAlgoritmos = enabledListaAlgoritmos;
+		this.enabledListaFiguras = enabledListaFiguras;
+		this.enabledListaQuadros = enabledListaQuadros;
 	}
 
 	public Long getId() {
@@ -158,6 +177,86 @@ public class ElementosPreTextuais {
 
 	public void setListaSimbolos(String listaSimbolos) {
 		this.listaSimbolos = listaSimbolos;
+	}
+
+	public boolean isEnabledAgradecimentos() {
+		return enabledAgradecimentos;
+	}
+
+	public void setEnabledAgradecimentos(boolean enabledAgradecimentos) {
+		this.enabledAgradecimentos = enabledAgradecimentos;
+	}
+
+	public boolean isEnabledDedicatoria() {
+		return enabledDedicatoria;
+	}
+
+	public void setEnabledDedicatoria(boolean enabledDedicatoria) {
+		this.enabledDedicatoria = enabledDedicatoria;
+	}
+
+	public boolean isEnabledEpigrafe() {
+		return enabledEpigrafe;
+	}
+
+	public void setEnabledEpigrafe(boolean enabledEpigrafe) {
+		this.enabledEpigrafe = enabledEpigrafe;
+	}
+
+	public boolean isEnabledFichaCatalografica() {
+		return enabledFichaCatalografica;
+	}
+
+	public void setEnabledFichaCatalografica(boolean enabledFichaCatalografica) {
+		this.enabledFichaCatalografica = enabledFichaCatalografica;
+	}
+
+	public boolean isEnabledListaSiglas() {
+		return enabledListaSiglas;
+	}
+
+	public void setEnabledListaSiglas(boolean enabledListaSiglas) {
+		this.enabledListaSiglas = enabledListaSiglas;
+	}
+
+	public boolean isEnabledListaSimbolos() {
+		return enabledListaSimbolos;
+	}
+
+	public void setEnabledListaSimbolos(boolean enabledListaSimbolos) {
+		this.enabledListaSimbolos = enabledListaSimbolos;
+	}
+
+	public boolean isEnabledListaTabelas() {
+		return enabledListaTabelas;
+	}
+
+	public void setEnabledListaTabelas(boolean enabledListaTabelas) {
+		this.enabledListaTabelas = enabledListaTabelas;
+	}
+
+	public boolean isEnabledListaAlgoritmos() {
+		return enabledListaAlgoritmos;
+	}
+
+	public void setEnabledListaAlgoritmos(boolean enabledListaAlgoritmos) {
+		this.enabledListaAlgoritmos = enabledListaAlgoritmos;
+	}
+
+	public boolean isEnabledListaFiguras() {
+		return enabledListaFiguras;
+	}
+
+	public void setEnabledListaFiguras(boolean enabledListaFiguras) {
+		this.enabledListaFiguras = enabledListaFiguras;
+	}
+
+	public boolean isEnabledListaQuadros() {
+		return enabledListaQuadros;
+	}
+
+	public void setEnabledListaQuadros(boolean enabledListaQuadros) {
+		this.enabledListaQuadros = enabledListaQuadros;
 	}
 
 	@Override
