@@ -13,9 +13,10 @@ public final class ParseFichaCatalograficaComponent extends Parse {
 		switch(string) {
 			case"\\palavraschave":
 				String palavrasChave = "";
-				if(document.getElementosPreTextuais().getFichaCatalografica() != null) {
-				for (String palavraChave : document.getElementosPreTextuais().getFichaCatalografica().getPalavrasChave())
-					palavrasChave += palavraChave;
+				int counter = 1;
+				for (String palavraChave : document.getElementosPreTextuais().getFichaCatalograficaPalavrasChave()) {
+					palavrasChave += counter + ". " + palavraChave + ".\n";
+					counter++;
 				}
 				return palavrasChave;
 			default:

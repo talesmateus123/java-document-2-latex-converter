@@ -2,7 +2,9 @@ package com.br.resources;
 
 import java.io.IOException;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -46,6 +48,11 @@ public class ConverterResource {
 		
 		ElementosPreTextuais elementosPreTextuais = new ElementosPreTextuais();
 		ElementosTextuais elementosTextuais = new ElementosTextuais();
+		List<String> fichaCatalograficaPalavrasChave = new ArrayList<String>();
+		fichaCatalograficaPalavrasChave.add("Palavra chave 1");
+		fichaCatalograficaPalavrasChave.add("Palavra chave 2");
+		fichaCatalograficaPalavrasChave.add("Palavra chave 3");
+		elementosPreTextuais.setFichaCatalograficaPalavrasChave(fichaCatalograficaPalavrasChave);
 		
 		Capitulo capitulo1 = new Capitulo(null, "Introducao", 
 				"<p>Parágrafo 1</p>"

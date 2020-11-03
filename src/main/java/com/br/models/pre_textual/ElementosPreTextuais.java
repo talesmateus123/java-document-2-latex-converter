@@ -1,32 +1,79 @@
 package com.br.models.pre_textual;
 
-import com.br.models.components.Lista;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ElementosPreTextuais {
-	// TODO Fazer últimos ajustes dessa classe e implementar a Classe DTO
 	private Long id;
 	private Resumo abstractX;
 	private String agradecimentos;
 	private String dedicatoria;
 	private String epigrafe;
-	private FichaCatalografica fichaCatalografica;
+	private List<String> fichaCatalograficaPalavrasChave;
 	private String preAmbulo;
 	private Resumo resumo;
-	private Lista listaSiglas;
-	private Lista listaSimbolos;
+	// Lista em HTML com índices
+	private String listaSiglas;
+	// Lista em HTML com índices
+	private String listaSimbolos;
+	
+	/*
+	% Ficha Catalográfica
+	!\include{elementos/pre-textuais/ficha-catalografica}!
+
+	% Folha de Aprovação
+	!\include{elementos/pre-textuais/folha-aprovacao}!
+
+	% Dedicatória
+	!\include{elementos/pre-textuais/dedicatoria}!
+
+	% Agradecimentos
+	!\include{elementos/pre-textuais/agradecimentos}!
+
+	% Epígrafe
+	!\include{elementos/pre-textuais/epigrafe}!
+
+	%obrigatorio
+	% Resumo em Português
+	\include{elementos/pre-textuais/resumo}
+	%obrigatorio
+	% Resumo em Inglês
+	\include{elementos/pre-textuais/abstract}
+
+	% Lista de Figuras
+	!\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-figuras}!
+
+	% Lista de Quadros
+	!\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-quadros}!
+
+	% Lista de Tabelas
+	!\include{elementos/pre-textuais/listas/lista-tabelas}!
+
+	% Lista de Abreviaturas e Siglas
+	!\include{elementos/pre-textuais/listas/lista-siglas}!
+
+	% Lista de Símbolos
+	!\include{elementos/pre-textuais/listas/lista-simbolos}!
+
+	% Lista de Algoritmos
+	!\include{elementos/pre-textuais/listas/listas-diversas/lista-algoritmos}!
+
+	% Sumário
+	\include{elementos/pre-textuais/sumario}
+	 */
 
 	public ElementosPreTextuais() {
-		
+		this.fichaCatalograficaPalavrasChave = new ArrayList<String>();
 	}
 
 	public ElementosPreTextuais(Long id, Resumo abstractX, String agradecimentos, String dedicatoria, String epigrafe,
-			FichaCatalografica fichaCatalografica, String preAmbulo, Resumo resumo, Lista listaSiglas, Lista listaSimbolos) {
+			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, String listaSiglas, String listaSimbolos) {
 		this.id = id;
 		this.abstractX = abstractX;
 		this.agradecimentos = agradecimentos;
 		this.dedicatoria = dedicatoria;
 		this.epigrafe = epigrafe;
-		this.fichaCatalografica = fichaCatalografica;
+		this.fichaCatalograficaPalavrasChave = fichaCatalograficaPalavrasChave != null ? fichaCatalograficaPalavrasChave : new ArrayList<String>();
 		this.preAmbulo = preAmbulo;
 		this.resumo = resumo;
 		this.listaSiglas = listaSiglas;
@@ -73,12 +120,12 @@ public class ElementosPreTextuais {
 		this.epigrafe = epigrafe;
 	}
 
-	public FichaCatalografica getFichaCatalografica() {
-		return fichaCatalografica;
+	public List<String> getFichaCatalograficaPalavrasChave() {
+		return fichaCatalograficaPalavrasChave;
 	}
 
-	public void setFichaCatalografica(FichaCatalografica fichaCatalografica) {
-		this.fichaCatalografica = fichaCatalografica;
+	public void setFichaCatalograficaPalavrasChave(List<String> fichaCatalograficaPalavrasChave) {
+		this.fichaCatalograficaPalavrasChave = fichaCatalograficaPalavrasChave;
 	}
 
 	public String getPreAmbulo() {
@@ -97,19 +144,19 @@ public class ElementosPreTextuais {
 		this.resumo = resumo;
 	}
 
-	public Lista getListaSiglas() {
+	public String getListaSiglas() {
 		return listaSiglas;
 	}
 
-	public void setListaSiglas(Lista listaSiglas) {
+	public void setListaSiglas(String listaSiglas) {
 		this.listaSiglas = listaSiglas;
 	}
 
-	public Lista getListaSimbolos() {
+	public String getListaSimbolos() {
 		return listaSimbolos;
 	}
 
-	public void setListaSimbolos(Lista listaSimbolos) {
+	public void setListaSimbolos(String listaSimbolos) {
 		this.listaSimbolos = listaSimbolos;
 	}
 
