@@ -90,7 +90,7 @@ public class ConverterResource {
 	@GetMapping("/zip")
 	public ResponseEntity<Resource> downloadZippedFile() throws IOException {
 		Documento documento = getDocumento();
-		Resource resource = service.toConvert(documento);
+		Resource resource = service.convertToZipFile(documento);
 		
 		return ResponseEntity.ok()
 	            .contentType(MediaType.APPLICATION_OCTET_STREAM)
@@ -101,7 +101,7 @@ public class ConverterResource {
 	@GetMapping("/pdf")
 	public ResponseEntity<Resource> downloadPdfFile() throws IOException {
 		Documento documento = getDocumento();
-		Resource resource = service.toConvert(documento, true);
+		Resource resource = service.convertToPdfFile(documento);
 		
 		return ResponseEntity.ok()
 	            .contentType(MediaType.APPLICATION_PDF)

@@ -65,7 +65,7 @@ public class DocumentTests {
 		ConverterService converter = new ConverterService();
 		
 		try {
-			converter.toConvert(documento);
+			converter.convertToZipFile(documento);
 		} 
 		catch (IOException e) {
 			e.printStackTrace();
