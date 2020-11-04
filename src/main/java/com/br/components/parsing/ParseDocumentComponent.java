@@ -47,6 +47,12 @@ public final class ParseDocumentComponent extends Parse {
 			case"\\include{elementos/pre-textuais/listas/listas-diversas/lista-algoritmos}":
 				return document.getElementosPreTextuais().isEnabledListaAlgoritmos() ? "\\include{elementos/pre-textuais/listas/listas-diversas/lista-algoritmos}"
 						: "%\\include{elementos/pre-textuais/listas/listas-diversas/lista-algoritmos}";
+			case"\\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-figuras}":
+				return document.getElementosPreTextuais().isEnabledListaAlgoritmos() ? "\\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-figuras}"
+						: "%\\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-figuras}";
+			case"\\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-quadros}":
+				return document.getElementosPreTextuais().isEnabledListaAlgoritmos() ? "\\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-quadros}"
+						: "%\\include{elementos/pre-textuais/listas/listas-ilustracoes/lista-quadros}";
 			case"\\include{elementos/pos-textuais/apendices}":
 				return !document.getElementosPosTextuais().getApendices().isEmpty() ? "\\include{elementos/pos-textuais/apendices}" 
 						: "%\\include{elementos/pos-textuais/apendices}";

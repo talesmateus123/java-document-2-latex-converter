@@ -14,7 +14,7 @@ public class Instituicao {
 	public Instituicao(Long id, String nome, String sigla, String campus, String departamento) {
 		this.id = id;
 		this.nome = nome;
-		this.sigla = sigla.toUpperCase();
+		this.sigla = sigla != null ? sigla.toUpperCase() : "";
 		this.campus = campus;
 		this.departamento = departamento;
 	}

@@ -1,26 +1,13 @@
 package com.br.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class CapituloNewDTO {
 	
+	@NotEmpty
 	private String titulo;
 	private String body;
-	private boolean unlisted;
-	
-	public CapituloNewDTO() {
-		this.unlisted = false;
-	}
-	
-	public CapituloNewDTO(String titulo, String body) {
-		this.titulo = titulo;
-		this.body = body;
-		this.unlisted = false;
-	}
-
-	public CapituloNewDTO(String titulo, String body, boolean unlisted) {
-		this.titulo = titulo;
-		this.body = body;
-		this.unlisted = unlisted;
-	}
+	private boolean unlisted = false;
 
 	public String getTitulo() {
 		return titulo;

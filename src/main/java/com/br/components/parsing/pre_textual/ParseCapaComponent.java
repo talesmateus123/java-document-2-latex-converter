@@ -14,21 +14,21 @@ public final class ParseCapaComponent extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\titulo{}":
-				return document.getTitulo() != null ? "\\titulo{" + document.getTitulo() + "}" : "%\\titulo{}";
+				return "\\titulo{" + document.getTitulo() + "}";
 			case"\\subtitulo{}":
 				return document.getSubTitulo() != null ? "\\subtitulo{" + document.getSubTitulo() + "}" : "%\\subtitulo{}";
 			case"\\titleabstract{}":
-				return document.getTitle() != null ? "\\titleabstract{" + document.getTitle() + "}" : "%\\titleabstract{}";
+				return "\\titleabstract{" + document.getTitle() + "}";
 			case"\\autor{}":
-				return document.getAutor() != null ? "\\autor{" + document.getAutor().getNomeCompleto() + "}" : "%\\autor{}";
+				return "\\autor{" + document.getAutor().getNomeCompleto() + "}";
 			case"\\autorcitacao{}":
-				return document.getAutor() != null ? "\\autorcitacao{" + document.getAutor().getCitacao() + "}" : "%\\autorcitacao{}";
+				return "\\autorcitacao{" + document.getAutor().getCitacao() + "}";
 			case"\\local{}":
-				return document.getNomeCidade() != null ? "\\local{" + document.getNomeCidade() + "}" : "%\\local{}";
+				return "\\local{" + document.getNomeCidade() + "}";
 			case"\\data{}":
-				return document.getAno() != null ? "\\data{" + document.getAno() + "}" : "%\\data{}";
+				return "\\data{" + document.getAno() + "}";
 			case"\\projeto{}":
-				return document.getTipoTrabalho() != null ? "\\projeto{" + document.getTipoTrabalho().getDescription() + "}" : "\\projeto{}";
+				return "\\projeto{" + document.getTipoTrabalho().getDescription() + "}";
 			case"\\tituloAcademico{}":
 				return document.getTituloAcademico() != null ? "\\tituloAcademico{" + document.getTituloAcademico().getDescription() + "}" : "%\\tituloAcademico{}";
 			case"\\areaconcentracao{}":
@@ -36,7 +36,7 @@ public final class ParseCapaComponent extends Parse {
 			case"\\linhapesquisa{}":
 				return document.getLinhaPesquisa() != null ? "\\linhapesquisa{" + document.getLinhaPesquisa() + "}" : "%\\linhapesquisa{}";
 			case"\\instituicao{}":
-				return document.getInstituicao().getNome() != null ? "\\instituicao{" + document.getInstituicao().getNome() + "}" : "\\instituicao{" + "to implement" + "}";
+				return "\\instituicao{" + document.getInstituicao().getNome() + "}";
 			case"\\newcommand\\instituicaosigla{}":
 				return document.getInstituicao().getSigla() != null ? "\\newcommand\\instituicaosigla{" + document.getInstituicao().getSigla() + "}" : "%\\newcommand\\instituicaosigla{}";
 			case"\\newcommand\\instituicaocampus{}":
@@ -55,13 +55,13 @@ public final class ParseCapaComponent extends Parse {
 					if (document.getTituloAcademico() == TituloAcademico.DOUTOR)
 						tituloAcademico = "de doutorado";
 				}
-				return document.getCurso() != null ? "\\programa{Curso " + tituloAcademico + " em " + document.getCurso().getNome() + "}" : "\\programa{" + "Nome do curso" + "}";				
+				return "\\programa{Curso " + tituloAcademico + " em " + document.getCurso().getNome() + "}";				
 			case"\\newcommand\\programanivel{}":
-				return document.getCurso() != null ? "\\newcommand\\programanivel{" + document.getCurso().getNivelEscolar() + "}" : "";
+				return document.getCurso() != null ? "\\newcommand\\programanivel{" + document.getCurso().getNivelEscolar().getDescription() + "}" : "";
 			case"\\orientador{}":
 				return document.getOrientador() != null ? "\\orientador{Prof. " + document.getOrientador().getNomeCompleto() + "}" : "%\\orientador{Prof. }";
 			case"\\coorientador{}":
-				return document.getCoorientador1() != null ? "\\coorientador{Prof. " + document.getCoorientador1().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
+				return document.getCoorientador() != null ? "\\coorientador{Prof. " + document.getCoorientador().getNomeCompleto() + "}" : "%\\coorientador{Prof. }";
 			default:
 				return string;
 		}

@@ -56,10 +56,9 @@ public class DocumentTests {
 		;
 		
 		Documento documento = new Documento(null, "O desenvolvimento de software na era contemporânea", null, 
-				"The software development in the contemporary era", autor, "Corumbá", 
-				Year.now(), null, TipoTrabalho.TCC, TituloAcademico.TECNOLOGO, null, null, 
-				instituicao, curso, orientador, coorientador, null, elementosPreTextuais, elementosTextuais, 
-				elementosPosTextuais);
+				"The software development in the contemporary era", autor, "Corumbá", Year.now(), null, 
+				TipoTrabalho.TCC, TituloAcademico.TECNOLOGO, null, null, instituicao, curso, orientador, 
+				coorientador, elementosPreTextuais, elementosTextuais, elementosPosTextuais);
 		
 		ConverterService converter = new ConverterService();
 		

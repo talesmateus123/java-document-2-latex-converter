@@ -17,7 +17,7 @@ public final class ParseResumoComponent extends Parse {
 				String palavrasChave = "";
 				if(document.getElementosPreTextuais().getResumo() != null) {
 					for (String palavraChave : document.getElementosPreTextuais().getResumo().getPalavrasChave())
-						palavrasChave += palavraChave;
+						palavrasChave += palavraChave + ". ";
 				}
 				return palavrasChave;
 			default:

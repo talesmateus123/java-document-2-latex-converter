@@ -1,6 +1,7 @@
 package com.br.services;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,12 @@ import com.br.models.pre_textual.Curso;
 import com.br.models.pre_textual.ElementosPreTextuais;
 import com.br.models.pre_textual.Instituicao;
 import com.br.models.pre_textual.Pessoa;
+import com.br.models.pre_textual.Resumo;
 import com.br.models.textual.ElementosTextuais;
 
 @Service
 public class ConverterService {
+	
 	@Autowired
 	private ConverterComponent converterComponent;
 	
@@ -52,7 +55,7 @@ public class ConverterService {
 		Pessoa orientador = new Pessoa(null, documentoNewDTO.getNomeOrientador(), documentoNewDTO.getSobrenomeOrientador(), 
 				TipoPessoa.ORIENTADOR, null);
 		
-		Pessoa coorientador_1 = new Pessoa(null, documentoNewDTO.getNomeCoorientador_1(), documentoNewDTO.getSobrenomeCoorientador_1(), 
+		Pessoa coorientador = new Pessoa(null, documentoNewDTO.getNomeCoorientador(), documentoNewDTO.getSobrenomeCoorientador(), 
 				TipoPessoa.COORIENTADOR, null);
 		
 		Instituicao instituicao = new Instituicao(null, documentoNewDTO.getNomeInstituicao(), documentoNewDTO.getSiglaInstituicao(), 
@@ -60,7 +63,16 @@ public class ConverterService {
 		
 		Curso curso = new Curso(null, documentoNewDTO.getNomeCurso(), documentoNewDTO.getNivelEscolarCurso());
 		
-		ElementosPreTextuais elementosPreTextuais = new ElementosPreTextuais();
+		Resumo abstractX = new Resumo(null, documentoNewDTO.getTextoAbstractX(), new Locale("en", "US"), documentoNewDTO.getPalavrasChaveAbstractX());
+		Resumo resumo = new Resumo(null, documentoNewDTO.getTextoResumo(), new Locale("pt", "BR"), documentoNewDTO.getPalavrasChaveResumo());
+		
+		ElementosPreTextuais elementosPreTextuais = new ElementosPreTextuais(null, abstractX, documentoNewDTO.getAgradecimentos(), 
+				documentoNewDTO.getDedicatoria(), documentoNewDTO.getEpigrafe(), documentoNewDTO.getFichaCatalograficaPalavrasChave(),
+				documentoNewDTO.getPreAmbulo(), resumo, documentoNewDTO.getListaSiglas(), documentoNewDTO.getListaSimbolos(),
+				documentoNewDTO.isEnabledAgradecimentos(), documentoNewDTO.isEnabledDedicatoria(), documentoNewDTO.isEnabledEpigrafe(),
+				documentoNewDTO.isEnabledFichaCatalografica(), documentoNewDTO.isEnabledListaSiglas(), documentoNewDTO.isEnabledListaSimbolos(),
+				documentoNewDTO.isEnabledListaTabelas(), documentoNewDTO.isEnabledListaAlgoritmos(), documentoNewDTO.isEnabledListaFiguras(),
+				documentoNewDTO.isEnabledListaQuadros());
 		ElementosTextuais elementosTextuais = new ElementosTextuais();
 		
 		elementosPreTextuais.setFichaCatalograficaPalavrasChave(documentoNewDTO.getFichaCatalograficaPalavrasChave());
@@ -75,7 +87,7 @@ public class ConverterService {
 				new Capitulo(null, capitulo.getTitulo(), capitulo.getBody(), capitulo.isUnlisted())).collect(Collectors.toList())
 				);
 		
-		return new Documento(null, documentoNewDTO.getTitulo(), documentoNewDTO.getSubTitulo(), documentoNewDTO.getTitle(), autor, documentoNewDTO.getNomeCidade(), documentoNewDTO.getAno(), documentoNewDTO.getDataAprovacao(), documentoNewDTO.getTipoTrabalho(), documentoNewDTO.getTituloAcademico(), documentoNewDTO.getAreaConcentracao(), documentoNewDTO.getLinhaPesquisa(), instituicao, curso, orientador, coorientador_1, null, elementosPreTextuais, elementosTextuais, elementosPosTextuais);
+		return new Documento(null, documentoNewDTO.getTitulo(), documentoNewDTO.getSubTitulo(), documentoNewDTO.getTitle(), autor, documentoNewDTO.getNomeCidade(), documentoNewDTO.getAno(), documentoNewDTO.getDataAprovacao(), documentoNewDTO.getTipoTrabalho(), documentoNewDTO.getTituloAcademico(), documentoNewDTO.getAreaConcentracao(), documentoNewDTO.getLinhaPesquisa(), instituicao, curso, orientador, coorientador, elementosPreTextuais, elementosTextuais, elementosPosTextuais);
 	}
 	
 }

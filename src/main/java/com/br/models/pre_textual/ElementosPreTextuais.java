@@ -68,8 +68,6 @@ public class ElementosPreTextuais {
 		this.enabledListaQuadros = true;
 	}
 	
-	
-
 	public ElementosPreTextuais(Long id, Resumo abstractX, String agradecimentos, String dedicatoria, String epigrafe,
 			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, String listaSiglas,
 			String listaSimbolos, boolean enabledAgradecimentos, boolean enabledDedicatoria, boolean enabledEpigrafe,

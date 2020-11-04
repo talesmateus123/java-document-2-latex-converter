@@ -28,6 +28,7 @@ public class Html2LatexUtil {
 		return body;
 	}
 	
+	// TODO To implement new LaTeX components from HTML
 	private static String parseElement(Element element) {
 		switch(element.tagName()) {
 			case"h1":

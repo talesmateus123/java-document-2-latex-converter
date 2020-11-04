@@ -64,7 +64,11 @@ public class Pessoa {
 	}
 	
 	public String getNomeCompleto() {
-		return this.nome + " " + this.sobrenome;
+		if (this.nome != null && this.sobrenome != null)
+			return this.nome + " " + this.sobrenome;
+		else if (this.nome != null)
+			return this.nome;
+		return "";
 	}
 	
 	public String getCitacao() {
