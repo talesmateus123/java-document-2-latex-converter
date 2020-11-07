@@ -6,6 +6,7 @@ import com.br.components.parsing.Parse;
 import com.br.models.Documento;
 import com.br.models.enums.TipoTrabalho;
 import com.br.models.enums.TituloAcademico;
+import com.br.util.Html2LatexUtil;
 
 @Component
 public final class ParseCapaComponent extends Parse {
@@ -14,11 +15,11 @@ public final class ParseCapaComponent extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\titulo{}":
-				return "\\titulo{" + document.getTitulo() + "}";
+				return "\\titulo{" + Html2LatexUtil.toConvertTextualElement(document.getTitulo()) + "}";
 			case"\\subtitulo{}":
-				return document.getSubTitulo() != null ? "\\subtitulo{" + document.getSubTitulo() + "}" : "%\\subtitulo{}";
+				return document.getSubTitulo() != null ? "\\subtitulo{" + Html2LatexUtil.toConvertTextualElement(document.getSubTitulo()) + "}" : "%\\subtitulo{}";
 			case"\\titleabstract{}":
-				return "\\titleabstract{" + document.getTitle() + "}";
+				return "\\titleabstract{" + Html2LatexUtil.toConvertTextualElement(document.getTitle()) + "}";
 			case"\\autor{}":
 				return "\\autor{" + document.getAutor().getNomeCompleto() + "}";
 			case"\\autorcitacao{}":

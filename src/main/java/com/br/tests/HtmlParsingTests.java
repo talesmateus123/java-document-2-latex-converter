@@ -31,7 +31,7 @@ public class HtmlParsingTests {
 		        + "		</ol>"
 		;
 		
-		System.out.println(Html2LatexUtil.toConvert(htmlText));
+		System.out.println(Html2LatexUtil.toConvertDocument(htmlText));
 	}
 	
 }

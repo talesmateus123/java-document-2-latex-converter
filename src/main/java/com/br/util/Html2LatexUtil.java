@@ -15,8 +15,21 @@ public class Html2LatexUtil {
 	 * @param string
 	 * @return string
 	 */
-	public static String toConvert(String string) {
+	public static String toConvertDocument(String string) {
 		return parseDocument(Jsoup.parse(string));
+	}
+	
+	/**
+	 * Converte elementos html em formato de string em elementos LaTeX e retorna em uma string. 
+	 * @param string
+	 * @return string
+	 */
+	public static String toConvertTextualElement(String string) {
+		if (!string.contains("<p>")) {
+			string = "<p>" + string + "</p>";
+		}
+		
+		return parseTextualElement(Jsoup.parse(string));
 	}
 	
 	private static String parseDocument(Document document) {
@@ -24,6 +37,15 @@ public class Html2LatexUtil {
 		String body = "";
 		for (Node node : nodes) {
 			if (node instanceof Element) body += parseElement((Element) node);
+		}
+		return body;
+	}
+	
+	private static String parseTextualElement(Document document) {
+		List<Node> nodes = document.body().childNodes();
+		String body = "";
+		for (Node node : nodes) {
+			if (node instanceof Element) body += parseTextualElement((Element) node);
 		}
 		return body;
 	}

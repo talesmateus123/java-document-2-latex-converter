@@ -21,7 +21,7 @@ public class ParseElementosComponent extends Parse {
 				"\n" +
 				"\\label{chap:" + capitulo.getLabel() + "}" +
 				"\n" +
-				"\t" + Html2LatexUtil.toConvert(capitulo.getBody()) + 
+				"\t" + Html2LatexUtil.toConvertDocument(capitulo.getBody()) + 
 				"\n" +
 				"\n";
 }

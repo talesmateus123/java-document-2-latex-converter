@@ -29,7 +29,7 @@ public class ConverterResource {
 	
 	@PostMapping("/zip")
 	public ResponseEntity<Resource> convertDocumentoToZipFile(@Valid @RequestBody DocumentoNewDTO objectDTO) {
-		Documento object = this.service.fromDTO(objectDTO);		
+		Documento object = this.service.fromDTO(objectDTO);
 		Resource resource = this.service.convertToZipFile(object);
 		
 		return ResponseEntity.ok()

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.br.components.parsing.Parse;
 import com.br.models.Documento;
+import com.br.util.Html2LatexUtil;
 
 @Component
 public final class ParseAbstractXComponent extends Parse {
@@ -12,7 +13,9 @@ public final class ParseAbstractXComponent extends Parse {
 	public String persistData(String string, Documento document) {
 		switch(string) {
 			case"\\abstractX":
-				return document.getElementosPreTextuais().getAbstractX().getTexto() != null ? document.getElementosPreTextuais().getAbstractX().getTexto() : "";
+				return document.getElementosPreTextuais().getAbstractX().getTexto() != null ? 
+						Html2LatexUtil.toConvertTextualElement(document.getElementosPreTextuais().getAbstractX().getTexto()) 
+						: "";
 			case"\\keywords":
 				String palavrasChave = "";
 				if(document.getElementosPreTextuais().getAbstractX() != null) {
