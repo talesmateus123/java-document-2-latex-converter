@@ -25,8 +25,6 @@ public class DocumentoNewDTO {
 	// Autor
 	@NotEmpty
 	private String nomeAutor;
-	@NotEmpty
-	private String sobrenomeAutor;
 
 	@NotEmpty
 	private String nomeCidade;
@@ -56,11 +54,9 @@ public class DocumentoNewDTO {
 
 	// Orientador
 	private String nomeOrientador;
-	private String sobrenomeOrientador;
 	
 	// Coorientador
 	private String nomeCoorientador;
-	private String sobrenomeCoorientador;
 
 	// Elementos pré textuais
 	
@@ -132,14 +128,6 @@ public class DocumentoNewDTO {
 
 	public void setNomeAutor(String nomeAutor) {
 		this.nomeAutor = nomeAutor;
-	}
-
-	public String getSobrenomeAutor() {
-		return sobrenomeAutor;
-	}
-
-	public void setSobrenomeAutor(String sobrenomeAutor) {
-		this.sobrenomeAutor = sobrenomeAutor;
 	}
 
 	public String getNomeCidade() {
@@ -254,28 +242,12 @@ public class DocumentoNewDTO {
 		this.nomeOrientador = nomeOrientador;
 	}
 
-	public String getSobrenomeOrientador() {
-		return sobrenomeOrientador;
-	}
-
-	public void setSobrenomeOrientador(String sobrenomeOrientador) {
-		this.sobrenomeOrientador = sobrenomeOrientador;
-	}
-
 	public String getNomeCoorientador() {
 		return nomeCoorientador;
 	}
 
 	public void setNomeCoorientador(String nomeCoorientador_1) {
 		this.nomeCoorientador = nomeCoorientador_1;
-	}
-
-	public String getSobrenomeCoorientador() {
-		return sobrenomeCoorientador;
-	}
-
-	public void setSobrenomeCoorientador(String sobrenomeCoorientador_1) {
-		this.sobrenomeCoorientador = sobrenomeCoorientador_1;
 	}
 
 	public String getTextoAbstractX() {

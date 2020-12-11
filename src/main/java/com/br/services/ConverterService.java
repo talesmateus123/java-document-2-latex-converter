@@ -48,15 +48,38 @@ public class ConverterService {
 		}
 	}
 	
+	private String extractName(String name) {
+		if(name.contains(" ")) {
+			String[] splitedName = name.split(" ");
+			return splitedName[0];
+		}
+		else
+			return name;
+	}
+	
+	private String extractLastName(String name) {
+		if(name.contains(" ")) {
+			String[] splitedName = name.split(" ");
+			return splitedName[splitedName.length-1];
+		}
+		else
+			return name;
+	}
+	
 	public Documento fromDTO(DocumentoNewDTO documentoNewDTO) {
-		Pessoa autor = new Pessoa(null, documentoNewDTO.getNomeAutor(), documentoNewDTO.getSobrenomeAutor(), 
+		Pessoa autor, orientador = null, coorientador = null;
+		autor = new Pessoa(null, extractName(documentoNewDTO.getNomeAutor()), extractLastName(documentoNewDTO.getNomeAutor()), 
 				TipoPessoa.ORIENTANDO, null);
 		
-		Pessoa orientador = new Pessoa(null, documentoNewDTO.getNomeOrientador(), documentoNewDTO.getSobrenomeOrientador(), 
+		if(documentoNewDTO.getNomeOrientador() != null) {
+		orientador = new Pessoa(null, extractName(documentoNewDTO.getNomeOrientador()), extractLastName(documentoNewDTO.getNomeOrientador()), 
 				TipoPessoa.ORIENTADOR, null);
+		}
 		
-		Pessoa coorientador = new Pessoa(null, documentoNewDTO.getNomeCoorientador(), documentoNewDTO.getSobrenomeCoorientador(), 
+		if(documentoNewDTO.getNomeCoorientador() != null) {
+		coorientador = new Pessoa(null, extractName(documentoNewDTO.getNomeCoorientador()), extractLastName(documentoNewDTO.getNomeCoorientador()), 
 				TipoPessoa.COORIENTADOR, null);
+		}
 		
 		Instituicao instituicao = new Instituicao(null, documentoNewDTO.getNomeInstituicao(), documentoNewDTO.getSiglaInstituicao(), 
 				documentoNewDTO.getCampusInstituicao(), documentoNewDTO.getDepartamentoInstituicao());
