@@ -13,9 +13,9 @@ public class ElementosPreTextuais {
 	private String preAmbulo;
 	private Resumo resumo;
 	// Lista em HTML com índices
-	private String listaSiglas;
+	private List<String> listaSiglas;
 	// Lista em HTML com índices
-	private String listaSimbolos;
+	private List<String> listaSimbolos;
 	
 	private boolean enabledAgradecimentos;
 	private boolean enabledDedicatoria;
@@ -45,7 +45,7 @@ public class ElementosPreTextuais {
 	}
 
 	public ElementosPreTextuais(Long id, Resumo abstractX, String agradecimentos, String dedicatoria, String epigrafe,
-			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, String listaSiglas, String listaSimbolos) {
+			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, List<String> listaSiglas, List<String> listaSimbolos) {
 		this.id = id;
 		this.abstractX = abstractX != null ? abstractX : new Resumo();
 		this.agradecimentos = agradecimentos;
@@ -69,8 +69,8 @@ public class ElementosPreTextuais {
 	}
 	
 	public ElementosPreTextuais(Long id, Resumo abstractX, String agradecimentos, String dedicatoria, String epigrafe,
-			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, String listaSiglas,
-			String listaSimbolos, boolean enabledAgradecimentos, boolean enabledDedicatoria, boolean enabledEpigrafe,
+			List<String> fichaCatalograficaPalavrasChave, String preAmbulo, Resumo resumo, List<String> listaSiglas,
+			List<String> listaSimbolos, boolean enabledAgradecimentos, boolean enabledDedicatoria, boolean enabledEpigrafe,
 			boolean enabledFichaCatalografica, boolean enabledListaSiglas, boolean enabledListaSimbolos,
 			boolean enabledListaTabelas, boolean enabledListaAlgoritmos, boolean enabledListaFiguras,
 			boolean enabledListaQuadros) {
@@ -160,19 +160,19 @@ public class ElementosPreTextuais {
 		this.resumo = resumo;
 	}
 
-	public String getListaSiglas() {
+	public List<String> getListaSiglas() {
 		return listaSiglas;
 	}
 
-	public void setListaSiglas(String listaSiglas) {
+	public void setListaSiglas(List<String> listaSiglas) {
 		this.listaSiglas = listaSiglas;
 	}
 
-	public String getListaSimbolos() {
+	public List<String> getListaSimbolos() {
 		return listaSimbolos;
 	}
 
-	public void setListaSimbolos(String listaSimbolos) {
+	public void setListaSimbolos(List<String> listaSimbolos) {
 		this.listaSimbolos = listaSimbolos;
 	}
 

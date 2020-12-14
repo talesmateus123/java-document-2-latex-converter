@@ -22,6 +22,7 @@ import com.br.components.parsing.textual.ParseElementosTextuaisComponent;
 import com.br.models.Capitulo;
 import com.br.models.Documento;
 
+// TODO: Is missing implementation of listaSiglas and listaSimbolos
 @Component
 public class DocumentParserComponent {
 	@Autowired

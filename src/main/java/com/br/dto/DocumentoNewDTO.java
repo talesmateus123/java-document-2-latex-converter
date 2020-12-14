@@ -75,9 +75,9 @@ public class DocumentoNewDTO {
 	private List<String> palavrasChaveResumo = new ArrayList<String>();
 	
 	// Lista em HTML com índices
-	private String listaSiglas;
+	private List<String> listaSiglas = new ArrayList<String>();
 	// Lista em HTML com índices
-	private String listaSimbolos;
+	private List<String> listaSimbolos = new ArrayList<String>();
 	
 	// Opções para os elementos pre textuais
 	private boolean enabledAgradecimentos = true;
@@ -322,19 +322,19 @@ public class DocumentoNewDTO {
 		this.palavrasChaveResumo = palavrasChaveResumo != null ? palavrasChaveResumo : new ArrayList<String>();
 	}
 
-	public String getListaSiglas() {
+	public List<String> getListaSiglas() {
 		return listaSiglas;
 	}
 
-	public void setListaSiglas(String listaSiglas) {
+	public void setListaSiglas(List<String> listaSiglas) {
 		this.listaSiglas = listaSiglas;
 	}
 
-	public String getListaSimbolos() {
+	public List<String> getListaSimbolos() {
 		return listaSimbolos;
 	}
 
-	public void setListaSimbolos(String listaSimbolos) {
+	public void setListaSimbolos(List<String> listaSimbolos) {
 		this.listaSimbolos = listaSimbolos;
 	}
 
