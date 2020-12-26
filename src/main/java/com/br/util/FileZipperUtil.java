@@ -20,7 +20,7 @@ public class FileZipperUtil {
     public static File zipDirectory(File dir) throws IOException {
     	File zippedFile = new File(dir.getPath() + ".zip");
     	filesListInDir = new ArrayList<String>();
-        populateFilesList(dir);
+    	populateFileList(dir);
         // now zip files one by one
         // create ZipOutputStream to write to the zip file
         FileOutputStream fos = new FileOutputStream(zippedFile.getPath());
@@ -49,11 +49,11 @@ public class FileZipperUtil {
      * @param dir
      * @throws IOException
      */
-    private static void populateFilesList(File dir) throws IOException {
+    private static void populateFileList(File dir) throws IOException {
         File[] files = dir.listFiles();
         for (File file : files) {
             if (file.isFile()) filesListInDir.add(file.getAbsolutePath());
-            else populateFilesList(file);
+            else populateFileList(file);
         }
     }
 	

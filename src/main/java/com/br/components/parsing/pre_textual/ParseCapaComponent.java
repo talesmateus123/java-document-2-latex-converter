@@ -48,7 +48,7 @@ public final class ParseCapaComponent extends Parse {
 				String tituloAcademico = "";
 				if (document.getCurso() != null) {
 					if (document.getTituloAcademico() == TituloAcademico.BACHAREL)
-						tituloAcademico = "técnico";
+						tituloAcademico = "de bacharelado";
 					if (document.getTituloAcademico() == TituloAcademico.TECNOLOGO)
 						tituloAcademico = "de tecnologia";
 					if (document.getTituloAcademico() == TituloAcademico.MESTRE)

@@ -45,8 +45,8 @@ public class FileUtil {
 	public static void deleteDirectory (File file) throws IOException {
 		Path path = Paths.get(file.getPath());
 		
-		  Files.walk(path)
-		    .sorted(Comparator.reverseOrder())
+		Files.walk(path)
+			.sorted(Comparator.reverseOrder())
 		    .map(Path::toFile)
 		    .forEach(File::delete);
 	}
