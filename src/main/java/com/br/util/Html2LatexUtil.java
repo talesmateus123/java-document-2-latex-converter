@@ -82,9 +82,9 @@ public class Html2LatexUtil {
 		switch(element.tagName()) {
 			case"p":
 				return parseParagraph(element);
-			case"i":
+			case"em":
 				return "\\textit{" + handleSpecialCharacters(element.text()) + "}";
-			case"b":
+			case"strong":
 				return "\\textbf{" + handleSpecialCharacters(element.text()) + "}";
 			case"u":
 				return "\\underline{" + handleSpecialCharacters(element.text()) + "}";

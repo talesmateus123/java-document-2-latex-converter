@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Component;
@@ -56,8 +57,8 @@ public class ConverterComponent {
 	}
 	
 	private File parseDocumentToTemplate() throws IOException {
-		File templateFile = new File("src/main/resources/latex-templates/monografia");
-
+		File templateFile = new ClassPathResource("latex-templates/monografia").getFile();
+		
 		generateFileName();
 		
         File mainDirectory = new File(this.mainDirectoryPath);
@@ -66,10 +67,11 @@ public class ConverterComponent {
         File fileCopied = new File(this.mainDirectoryPath);
 		
 		copyFolder(templateFile, fileCopied);
-		
 		parseDocument();
 		parseElementosPreTextuais();
-		parseElementosTextuais();
+		
+		parseElementosTextuais();		
+
 		parseElementosPosTextuaisApendices();
 		parseElementosPosTextuaisAnexos();
 		this.documento = null;
@@ -119,9 +121,11 @@ public class ConverterComponent {
 	}
 	
 	private void parseElementosTextuais() throws IOException {
+		File main_folder = new File(this.mainDirectoryPath + "/elementos/textuais");
+		main_folder.mkdirs();
 		List<Capitulo> capitulos = this.documento.getElementosTextuais().getCapitulos();
 		for(Capitulo capitulo : capitulos) {
-			File file = new File(this.mainDirectoryPath + "/elementos/textuais/" + capitulo.getLabel() + ".tex");
+			File file = new File(this.mainDirectoryPath + "/elementos/textuais/" + capitulo.getLabel() + ".tex");			
 			FileUtil.createFile(file);
 			documentParser.parseElementosTextuais(file, capitulo);
 		}
